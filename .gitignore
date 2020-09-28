@@ -1,3 +1,7 @@
+# Family Tree
+scripts/credentials.json
+scripts/token.pickle
+
 # Logs
 logs
 *.log
