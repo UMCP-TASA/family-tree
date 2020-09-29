@@ -21,9 +21,11 @@ export default function Tree(props: TreeProps) {
             scaleYMax={4}
         >
             {zoom => (
-                <svg width={width} height={height}>
-                    <GradientPinkBlue id="gradient" />
-                    <rect width={width} height={height} fill="url('#gradient')" />
+                <svg
+                    width={width}
+                    height={height}
+                    style={{ cursor: zoom.isDragging ? "grabbing" : "grab" }}
+                >
                     <Text x={width / 2} y={height / 2}>
                         Hello World
                     </Text>
