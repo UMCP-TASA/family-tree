@@ -1,57 +1,35 @@
 import React from "react"
 import { Text } from "@visx/text"
-import { Zoom } from "@visx/zoom"
-import { localPoint } from "@visx/event"
-import { GradientPinkBlue } from "@visx/gradient"
+import { Tree as VisTree } from "@visx/hierarchy"
+import { hierarchy } from "d3-hierarchy"
+
+export type TreeData = {
+    attributes: {
+        description: string,
+        familySize: number,
+        id: string,
+        positions: string[],
+        year: string,
+    },
+    isExpanded?: boolean
+    name: string,
+    children: TreeData[],
+}
 
 export type TreeProps = {
     width: number
     height: number
+    data: TreeData
+    orientation?: "horizontal" | "vertical",
 }
 
 export default function Tree(props: TreeProps) {
-    const { width, height } = props
-    return (
-        <Zoom
-            width={width}
-            height={height}
-            scaleXMin={1 / 2}
-            scaleXMax={4}
-            scaleYMin={1 / 2}
-            scaleYMax={4}
-        >
-            {zoom => (
-                <svg
-                    width={width}
-                    height={height}
-                    style={{ cursor: zoom.isDragging ? "grabbing" : "grab" }}
-                >
-                    <g transform={zoom.toString()}>
-                        <Text x={width / 2} y={height / 2}>
-                            Hello World
-                        </Text>
-                    </g>
+    const { width, height, data } = props
 
-                    <rect
-                        width={width}
-                        height={height}
-                        fill="transparent"
-                        onTouchStart={zoom.dragStart}
-                        onTouchMove={zoom.dragMove}
-                        onTouchEnd={zoom.dragEnd}
-                        onMouseDown={zoom.dragStart}
-                        onMouseMove={zoom.dragMove}
-                        onMouseUp={zoom.dragEnd}
-                        onMouseLeave={() => {
-                            if (zoom.isDragging) zoom.dragEnd()
-                        }}
-                        onDoubleClick={event => {
-                            const point = localPoint(event) || { x: 0, y: 0 }
-                            zoom.scale({ scaleX: 1.1, scaleY: 1.1, point })
-                        }}
-                    />
-                </svg>
-            )}
-        </Zoom>
+    const root = hierarchy(data)
+    return (
+        <g>
+            <VisTree top={0} left={0} root={root} />
+        </g>
     )
 }

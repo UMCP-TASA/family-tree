@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { ParentSize } from "@visx/responsive"
+import ZoomContainer from "components/ZoomContainer"
 import data from "assets/family-tree"
 import Tree from "components/Tree"
 
@@ -9,7 +10,7 @@ const Wrapper = styled.div`
     height: 100vh;
     display: grid;
     place-items: center;
-    background: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
+    background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
 `
 
 const StyledParentSize = styled(ParentSize)`
@@ -21,7 +22,18 @@ export default function Home() {
     return (
         <Wrapper>
             <StyledParentSize>
-                {size => <Tree width={size.width * 0.99} height={size.height * 0.99}></Tree>}
+                {size => (
+                    <ZoomContainer
+                        width={size.width * 0.99}
+                        height={size.height * 0.99}
+                    >
+                        <Tree
+                            width={size.width * 0.99}
+                            height={size.height * 0.99}
+                            data={data}
+                        />
+                    </ZoomContainer>
+                )}
             </StyledParentSize>
         </Wrapper>
     )

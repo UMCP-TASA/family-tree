@@ -1,4 +1,6 @@
-export default {
+import { TreeData } from "components/Tree"
+
+const data: TreeData = {
     attributes: {
         description: "",
         familySize: 0,
@@ -1998,3 +2000,5 @@ export default {
     ],
     name: "Founder",
 }
+
+export default data
