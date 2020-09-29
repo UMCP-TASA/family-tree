@@ -5,6 +5,27 @@
  */
 
 module.exports = {
-  /* Your site config here */
-  plugins: [],
+    siteMetadata: {
+        title: "TASA Family Tree",
+        author: "UMCP TASA",
+        description: "Family tree for UMCP TASA",
+        siteUrl: "https://familytree.umcptasa.com",
+    },
+    plugins: [
+        `gatsby-plugin-typescript`,
+        {
+            resolve: `gatsby-alias-imports`,
+            options: {
+                aliases: {},
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `assets`,
+                path: `${__dirname}/src/assets`,
+            },
+        },
+        `gatsby-plugin-styled-components`,
+    ],
 }
