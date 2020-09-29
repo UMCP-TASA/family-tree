@@ -26,9 +26,12 @@ export default function Tree(props: TreeProps) {
                     height={height}
                     style={{ cursor: zoom.isDragging ? "grabbing" : "grab" }}
                 >
-                    <Text x={width / 2} y={height / 2}>
-                        Hello World
-                    </Text>
+                    <g transform={zoom.toString()}>
+                        <Text x={width / 2} y={height / 2}>
+                            Hello World
+                        </Text>
+                    </g>
+
                     <rect
                         width={width}
                         height={height}
