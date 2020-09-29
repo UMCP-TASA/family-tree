@@ -6,14 +6,19 @@ import { NodeType } from "."
 
 type NodesProps = {
     nodes: NodeType[]
+    onNodeClick: (node: NodeType) => void
 }
 
 export default function Nodes(props: NodesProps) {
-    const { nodes } = props
+    const { nodes, onNodeClick } = props
     return (
         <>
             {nodes.map(node => (
-                <Node node={node} key={node.data.attributes.id} />
+                <Node
+                    node={node}
+                    key={node.data.attributes.id}
+                    onNodeClick={onNodeClick}
+                />
             ))}
         </>
     )

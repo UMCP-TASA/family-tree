@@ -26,10 +26,6 @@ export default function Container(props: ContainerProps) {
                     height={height}
                     style={{ cursor: zoom.isDragging ? "grabbing" : "grab" }}
                 >
-                    <g transform={zoom.toString()}>
-                        {children}
-                    </g>
-
                     <rect
                         width={width}
                         height={height}
@@ -48,6 +44,7 @@ export default function Container(props: ContainerProps) {
                             zoom.scale({ scaleX: 1.1, scaleY: 1.1, point })
                         }}
                     />
+                    <g transform={zoom.toString()}>{children}</g>
                 </svg>
             )}
         </Zoom>

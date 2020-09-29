@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     height: 100vh;
     display: grid;
     place-items: center;
-    background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+    background: #272b4d;
 `
 
 const StyledParentSize = styled(ParentSize)`
