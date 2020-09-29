@@ -1,9 +1,8 @@
 import React from "react"
-import { Text } from "@visx/text"
 import { Tree as VisTree, hierarchy } from "@visx/hierarchy"
-import { NodeType, TreeData } from "./index"
+import { TreeData } from "./index"
 import { Group } from "@visx/group"
-import Links from "./Links"
+import { GradientPinkBlue } from "@visx/gradient"
 import Nodes from "./Nodes"
 import { LinkHorizontal } from "@visx/shape"
 
@@ -22,7 +21,14 @@ export default function Tree(props: TreeProps) {
     const root = React.useMemo(() => hierarchy(data), [])
     return (
         <g>
-            <VisTree<TreeData> size={[yMax, xMax]} root={root}>
+            <GradientPinkBlue id="root-color" />
+            <VisTree<TreeData>
+                size={[yMax, xMax]}
+                root={root}
+                separation={(a, b) =>
+                    (a.parent == b.parent ? 10 : 5) / a.depth
+                }
+            >
                 {tree => (
                     <Group top={0} left={0}>
                         <g>
