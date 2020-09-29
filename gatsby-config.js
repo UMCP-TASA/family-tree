@@ -16,7 +16,9 @@ module.exports = {
         {
             resolve: `gatsby-alias-imports`,
             options: {
-                aliases: {},
+                aliases: {
+                    "@utils": `src/utils`
+                },
             },
         },
         {

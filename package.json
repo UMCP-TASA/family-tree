@@ -16,8 +16,10 @@
   "dependencies": {
     "@visx/event": "^1.0.0",
     "@visx/gradient": "^1.0.0",
+    "@visx/group": "^1.0.0",
     "@visx/hierarchy": "^1.0.0",
     "@visx/responsive": "^1.0.0",
+    "@visx/shape": "^1.0.0",
     "@visx/text": "^1.0.0",
     "@visx/zoom": "^1.0.0",
     "babel-plugin-styled-components": "^1.11.1",
