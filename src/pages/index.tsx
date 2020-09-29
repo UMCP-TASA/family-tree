@@ -15,7 +15,7 @@ export default function Home() {
     return (
         <Wrapper>
             <ParentSize>
-                {size => <Tree width={size.width} height={size.height}></Tree>}
+                {size => <Tree width={size.width * 0.9} height={size.height * 0.9}></Tree>}
             </ParentSize>
         </Wrapper>
     )
