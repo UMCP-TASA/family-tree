@@ -1,9 +1,10 @@
 import React from "react"
 import { Text } from "@visx/text"
 import { TextProps } from "@visx/text/lib/Text"
+import { Group } from "@visx/group"
 
 import { NodeType } from "."
-import { Group } from "@visx/group"
+import { isExpanded } from "@utils"
 
 const WIDTH = 50
 const HEIGHT = 25
@@ -42,7 +43,6 @@ const ParentNode = (props: NodeProps) => {
         x: -WIDTH / 2,
         y: -HEIGHT / 2,
     }
-    const isExpanded = node.data.isExpanded || node.data.isExpanded == undefined
     return (
         <>
             <rect
@@ -55,7 +55,7 @@ const ParentNode = (props: NodeProps) => {
             />
             <Text
                 width={WIDTH}
-                fill={isExpanded ? "white" : "#26deb0"}
+                fill={isExpanded(node) ? "white" : "#26deb0"}
                 {...FONT_OPTIONS}
             >
                 {node.data.name}

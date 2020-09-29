@@ -1,6 +1,16 @@
 import { NodeType } from "components/Tree"
 
-export function findCollapsedParent() {}
+export const isExpanded = (node: NodeType) => node.data.isExpanded || node.data.isExpanded == undefined
+
+export function findCollapsedParent(node: NodeType): NodeType {
+    if(!isExpanded(node)) {
+        return node
+    } else if (node.parent) {
+        return findCollapsedParent(node.parent)
+    } else {
+        return node
+    }
+}
 
 export function getTopLeft(node: NodeType) {
     return {
