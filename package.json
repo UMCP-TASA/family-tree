@@ -14,7 +14,10 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@visx/gradient": "^1.0.0",
+    "@visx/hierarchy": "^1.0.0",
     "@visx/responsive": "^1.0.0",
+    "@visx/text": "^1.0.0",
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.63",
     "gatsby-alias-imports": "^1.0.4",

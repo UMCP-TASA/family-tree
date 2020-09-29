@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
+import { ParentSize } from "@visx/responsive"
 import data from "assets/family-tree"
+import Tree from "components/tree"
 
 const Wrapper = styled.div`
     width: 100vw;
@@ -10,6 +12,11 @@ const Wrapper = styled.div`
 `
 
 export default function Home() {
-    console.log(data)
-    return <Wrapper>Hello world!</Wrapper>
+    return (
+        <Wrapper>
+            <ParentSize>
+                {size => <Tree width={size.width} height={size.height}></Tree>}
+            </ParentSize>
+        </Wrapper>
+    )
 }
