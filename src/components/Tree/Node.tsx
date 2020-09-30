@@ -102,13 +102,15 @@ export default function Node(props: NodeProps) {
     }
 
     return (
-        <Group
-            top={node.x}
-            left={node.y}
-            onClick={() => onNodeClick(node)}
-            style={{ cursor: "pointer" }}
-        >
+        // <Group
+        //     // top={node.x}
+        //     // left={node.y}
+        //     onClick={() => onNodeClick(node)}
+        //     style={{ cursor: "pointer" }}
+        // >
+        <>
             {displayedNode}
-        </Group>
+            </>
+        // </Group>
     )
 }

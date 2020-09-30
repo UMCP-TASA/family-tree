@@ -3,8 +3,10 @@ import { Tree as VisTree, hierarchy } from "@visx/hierarchy"
 import { TreeData } from "./index"
 import { Group } from "@visx/group"
 import { LinearGradient } from "@visx/gradient"
+// import { LinkHorizontal } from "@visx/shape"
+
 import Nodes from "./Nodes"
-import { LinkHorizontal } from "@visx/shape"
+import Links from "./Links"
 import useForceUpdate from "hooks/useForceUpdate"
 import { isExpanded } from "@utils"
 
@@ -41,15 +43,10 @@ export default function Tree(props: TreeProps) {
                 {tree => (
                     <Group top={0} left={0}>
                         <g>
-                            {tree.links().map((link, i) => (
-                                <LinkHorizontal
-                                    data={link}
-                                    stroke="rgb(254,110,158,0.6)"
-                                    strokeWidth="1"
-                                    fill="none"
-                                    key={`link-${i}`}
-                                />
-                            ))}
+                            <Links links={tree.links()} />
+                            {/* {tree.links().map((link, i) => (
+                                <Links links={tree}>
+                            ))} */}
                         </g>
                         <g>
                             <Nodes

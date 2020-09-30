@@ -1,5 +1,6 @@
 import React from "react"
 import { useTransition, animated } from "react-spring"
+import { Group } from "@visx/group"
 
 import Node from "./Node"
 import { NodeType } from "."
@@ -10,47 +11,49 @@ type NodesProps = {
     onNodeClick: (node: NodeType) => void
 }
 
+const AnimatedGroup = animated(Group)
+
 export default function Nodes(props: NodesProps) {
     const { nodes, onNodeClick } = props
     const transitions = useTransition(nodes, node => node.data.attributes.id, {
         from: node => {
-            const parentTopLeft = node.parent
-                ? getTopLeft(node.parent)
-                : { top: 0, left: 0 }
+            // const parentTopLeft = node.parent
+            //     ? getTopLeft(node.parent)
+            //     : { top: 0, left: 0 }
             return {
                 opacity: 0,
-                ...parentTopLeft,
+                //...parentTopLeft,
             }
         },
         enter: node => {
-            const topLeft = getTopLeft(node)
+            //const topLeft = getTopLeft(node)
             return {
                 opacity: 1,
-                ...topLeft,
+                //...topLeft,
             }
         },
         update: node => {
-            const topLeft = getTopLeft(node)
+            //const topLeft = getTopLeft(node)
             return {
                 opacity: 1,
-                ...topLeft,
+                //...topLeft,
             }
         },
         leave: node => {
-            let collapsedParentPosition = {}
-            if (node.parent) {
-                const collapsedParent = findCollapsedParent(node.parent)
-                collapsedParentPosition = {
-                    top: collapsedParent.data.x0 ? collapsedParent.data.x0 : collapsedParent.x,
-                    left: collapsedParent.data.y0 ? collapsedParent.data.y0 : collapsedParent.y,
-                }
-            } else {
-                collapsedParentPosition = { top: 0, left: 0 }
-            }
+            // let collapsedParentPosition = {}
+            // if (node.parent) {
+            //     const collapsedParent = findCollapsedParent(node.parent)
+            //     collapsedParentPosition = {
+            //         top: collapsedParent.data.x0 ? collapsedParent.data.x0 : collapsedParent.x,
+            //         left: collapsedParent.data.y0 ? collapsedParent.data.y0 : collapsedParent.y,
+            //     }
+            // } else {
+            //     collapsedParentPosition = { top: 0, left: 0 }
+            // }
 
             return {
                 opacity: 0,
-                ...collapsedParentPosition,
+                //...collapsedParentPosition,
             }
         },
     })
@@ -64,13 +67,18 @@ export default function Nodes(props: NodesProps) {
                 />
             ))} */}
             {transitions.map(({ item, key, props }) => (
-                <animated.g
+                <AnimatedGroup
                     opacity={props.opacity}
-                    transform={`translate(${props.left}, ${props.top})`}
+                    top={item.x}
+                    left={item.y}
+                    //transform={`translate(${props.left?.getValue()}, ${props.top?.getValue()})`}
+                    onClick={() => onNodeClick(item)}
+                    style={{ cursor: "pointer" }}
+                    id={key}
                     key={key}
                 >
                     <Node node={item} onNodeClick={onNodeClick} />
-                </animated.g>
+                </AnimatedGroup>
             ))}
         </>
     )

@@ -2001,4 +2001,553 @@ const data: TreeData = {
     name: "Founder",
 }
 
-export default data
+
+
+
+
+const Cindy: TreeData = {
+    attributes: {
+        description:
+            "Year: 2018\nFamily Size: 41\nPositions: Co-President, Treasurer, Fundraising Chair",
+        familySize: 41,
+        id: "Cindy_Jui_2018",
+        positions: [
+            "Co-President",
+            "Treasurer",
+            "Fundraising Chair",
+        ],
+        year: "2018",
+    },
+    children: [
+        {
+            attributes: {
+                description:
+                    "Year: 2020\nFamily Size: 0\nPositions: ",
+                familySize: 0,
+                id: "Andrew_Moy_2020",
+                positions: [""],
+                year: "2020",
+            },
+            children: [],
+            name: "Andrew Moy",
+        },
+        {
+            attributes: {
+                description:
+                    "Year: 2020\nFamily Size: 3\nPositions: ",
+                familySize: 3,
+                id: "Andrew_Yuan_2020",
+                positions: [""],
+                year: "2020",
+            },
+            children: [
+                {
+                    attributes: {
+                        description:
+                            "Year: 2021\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Dan_Chau_2021",
+                        positions: [""],
+                        year: "2021",
+                    },
+                    children: [],
+                    name: "Dan Chau",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2021\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Jonah_Ho_2021",
+                        positions: [""],
+                        year: "2021",
+                    },
+                    children: [],
+                    name: "Jonah Ho",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2021\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Steven_Fan_2021",
+                        positions: [""],
+                        year: "2021",
+                    },
+                    children: [],
+                    name: "Steven Fan",
+                },
+            ],
+            name: "Andrew Yuan",
+        },
+        {
+            attributes: {
+                description:
+                    "Year: 2018\nFamily Size: 0\nPositions: ",
+                familySize: 0,
+                id: "Brian_Tran_2018",
+                positions: [""],
+                year: "2018",
+            },
+            children: [],
+            name: "Brian Tran",
+        },
+        {
+            attributes: {
+                description:
+                    "Year: 2019\nFamily Size: 3\nPositions: ",
+                familySize: 3,
+                id: "Jason_Chern_2019",
+                positions: [""],
+                year: "2019",
+            },
+            children: [
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 2\nPositions: ",
+                        familySize: 2,
+                        id: "Jimmy_Ho_2020",
+                        positions: [""],
+                        year: "2020",
+                    },
+                    children: [
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2020\nFamily Size: 1\nPositions: ",
+                                familySize: 1,
+                                id: "Justin_Wu_2020",
+                                positions: [""],
+                                year: "2020",
+                            },
+                            children: [
+                                {
+                                    attributes: {
+                                        description:
+                                            "Year: 2020\nFamily Size: 0\nPositions: ",
+                                        familySize: 0,
+                                        id:
+                                            "Jocelyn_Lee_2020",
+                                        positions: [""],
+                                        year: "2020",
+                                    },
+                                    children: [],
+                                    name: "Jocelyn Lee",
+                                },
+                            ],
+                            name: "Justin Wu",
+                        },
+                    ],
+                    name: "Jimmy Ho",
+                },
+            ],
+            name: "Jason Chern",
+        },
+        {
+            attributes: {
+                description:
+                    "Year: 2020\nFamily Size: 4\nPositions: ",
+                familySize: 4,
+                id: "Justin_Liu_2020",
+                positions: [""],
+                year: "2020",
+            },
+            children: [
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Forest_Wang_2020",
+                        positions: [""],
+                        year: "2020",
+                    },
+                    children: [],
+                    name: "Forest Wang",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2021\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Justin_Shaw_2021",
+                        positions: [""],
+                        year: "2021",
+                    },
+                    children: [],
+                    name: "Justin Shaw",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Sam_Lin_2020",
+                        positions: [""],
+                        year: "2020",
+                    },
+                    children: [],
+                    name: "Sam Lin",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2022\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Thomas_Lin_2022",
+                        positions: [""],
+                        year: "2022",
+                    },
+                    children: [],
+                    name: "Thomas Lin",
+                },
+            ],
+            name: "Justin Liu",
+        },
+        {
+            attributes: {
+                description:
+                    "Year: 2019\nFamily Size: 13\nPositions: Co-President, Webmaster",
+                familySize: 13,
+                id: "Justin_Pan_2019",
+                positions: [
+                    "Co-President",
+                    "Webmaster",
+                ],
+                year: "2019",
+            },
+            children: [
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Alvin_Zhao_2020",
+                        positions: [""],
+                        year: "2020",
+                    },
+                    children: [],
+                    name: "Alvin Zhao",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2022\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Jack_Liang_2022",
+                        positions: [""],
+                        year: "2022",
+                    },
+                    children: [],
+                    name: "Jack Liang",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 2\nPositions: Fundraising Chair",
+                        familySize: 2,
+                        id: "Justin_Sher_2020",
+                        positions: [
+                            "Fundraising Chair",
+                        ],
+                        year: "2020",
+                    },
+                    children: [
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2022\nFamily Size: 0\nPositions: ",
+                                familySize: 0,
+                                id: "Andrew_Cheng_2022",
+                                positions: [""],
+                                year: "2022",
+                            },
+                            children: [],
+                            name: "Andrew Cheng",
+                        },
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2022\nFamily Size: 0\nPositions: ",
+                                familySize: 0,
+                                id:
+                                    "Chanoe_Andrew_Park_2022",
+                                positions: [""],
+                                year: "2022",
+                            },
+                            children: [],
+                            name: "Chanoe Andrew Park",
+                        },
+                    ],
+                    name: "Justin Sher",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 1\nPositions: Sports Chair",
+                        familySize: 1,
+                        id: "Kevin_Cheng_2020",
+                        positions: ["Sports Chair"],
+                        year: "2020",
+                    },
+                    children: [
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2021\nFamily Size: 0\nPositions: Sports Chair",
+                                familySize: 0,
+                                id: "Titus_Wong_2021",
+                                positions: [
+                                    "Sports Chair",
+                                ],
+                                year: "2021",
+                            },
+                            children: [],
+                            name: "Titus Wong",
+                        },
+                    ],
+                    name: "Kevin Cheng",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Kyle_Chan_2020",
+                        positions: [""],
+                        year: "2020",
+                    },
+                    children: [],
+                    name: "Kyle Chan",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 3\nPositions: ",
+                        familySize: 3,
+                        id: "Mia_Deng_2020",
+                        positions: [""],
+                        year: "2020",
+                    },
+                    children: [
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2021\nFamily Size: 0\nPositions: Co-President, AASU Rep",
+                                familySize: 0,
+                                id: "Angela_Pan_2021",
+                                positions: [
+                                    "Co-President",
+                                    "AASU Rep",
+                                ],
+                                year: "2021",
+                            },
+                            children: [],
+                            name: "Angela Pan",
+                        },
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2022\nFamily Size: 0\nPositions: ",
+                                familySize: 0,
+                                id: "Julian_Li_2022",
+                                positions: [""],
+                                year: "2022",
+                            },
+                            children: [],
+                            name: "Julian Li",
+                        },
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2022\nFamily Size: 0\nPositions: ",
+                                familySize: 0,
+                                id: "Zachary_Dou_2022",
+                                positions: [""],
+                                year: "2022",
+                            },
+                            children: [],
+                            name: "Zachary Dou",
+                        },
+                    ],
+                    name: "Mia Deng",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Raymond_Bao_2020",
+                        positions: [""],
+                        year: "2020",
+                    },
+                    children: [],
+                    name: "Raymond Bao",
+                },
+            ],
+            name: "Justin Pan",
+        },
+        {
+            attributes: {
+                description:
+                    "Year: 2019\nFamily Size: 2\nPositions: ",
+                familySize: 2,
+                id: "Michael_Huang_2019",
+                positions: [""],
+                year: "2019",
+            },
+            children: [
+                {
+                    attributes: {
+                        description:
+                            "Year: 2020\nFamily Size: 1\nPositions: ITASA Rep",
+                        familySize: 1,
+                        id: "Rita_Chen_2020",
+                        positions: ["ITASA Rep"],
+                        year: "2020",
+                    },
+                    children: [
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2022\nFamily Size: 0\nPositions: Fundraising Chair",
+                                familySize: 0,
+                                id: "Karen_Liu_2022",
+                                positions: [
+                                    "Fundraising Chair",
+                                ],
+                                year: "2022",
+                            },
+                            children: [],
+                            name: "Karen Liu",
+                        },
+                    ],
+                    name: "Rita Chen",
+                },
+            ],
+            name: "Michael Huang",
+        },
+        {
+            attributes: {
+                description:
+                    "Year: 2021\nFamily Size: 1\nPositions: Treasurer",
+                familySize: 1,
+                id: "Nick_Chow_2021",
+                positions: ["Treasurer"],
+                year: "2021",
+            },
+            children: [
+                {
+                    attributes: {
+                        description:
+                            "Year: 2022\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Kevin_Tsai_2022",
+                        positions: [""],
+                        year: "2022",
+                    },
+                    children: [],
+                    name: "Kevin Tsai",
+                },
+            ],
+            name: "Nick Chow",
+        },
+        {
+            attributes: {
+                description:
+                    "Year: 2020\nFamily Size: 6\nPositions: Co-President, Internal VP",
+                familySize: 6,
+                id: "Stephan_Loh_2020",
+                positions: [
+                    "Co-President",
+                    "Internal VP",
+                ],
+                year: "2020",
+            },
+            children: [
+                {
+                    attributes: {
+                        description:
+                            "Year: 2022\nFamily Size: 0\nPositions: Secretary",
+                        familySize: 0,
+                        id: "Alythia_Vo_2022",
+                        positions: ["Secretary"],
+                        year: "2022",
+                    },
+                    children: [],
+                    name: "Alythia Vo",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2021\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Andrew_Thai_2021",
+                        positions: [""],
+                        year: "2021",
+                    },
+                    children: [],
+                    name: "Andrew Thai",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2021\nFamily Size: 1\nPositions: Internal VP, Historian",
+                        familySize: 1,
+                        id: "Dotson_Hsing_2021",
+                        positions: [
+                            "Internal VP",
+                            "Historian",
+                        ],
+                        year: "2021",
+                    },
+                    children: [
+                        {
+                            attributes: {
+                                description:
+                                    "Year: 2018\nFamily Size: 0\nPositions: ",
+                                familySize: 0,
+                                id: "Michael_Yeh_2018",
+                                positions: [""],
+                                year: "2018",
+                            },
+                            children: [],
+                            name: "Michael Yeh",
+                        },
+                    ],
+                    name: "Dotson Hsing",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2021\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Noah_Shaw_2021",
+                        positions: [""],
+                        year: "2021",
+                    },
+                    children: [],
+                    name: "Noah Shaw",
+                },
+                {
+                    attributes: {
+                        description:
+                            "Year: 2022\nFamily Size: 0\nPositions: ",
+                        familySize: 0,
+                        id: "Patrick_Cao_2022",
+                        positions: [""],
+                        year: "2022",
+                    },
+                    children: [],
+                    name: "Patrick Cao",
+                },
+            ],
+            name: "Stephan Loh",
+        },
+    ],
+    name: "Cindy Jui",
+}
+
+
+export default Cindy

@@ -1,4 +1,4 @@
-import { HierarchyPointNode, HierarchyLink } from "@visx/hierarchy/lib/types"
+import { HierarchyPointNode, HierarchyPointLink } from "@visx/hierarchy/lib/types"
 
 export { default } from "./Tree"
 
@@ -19,4 +19,4 @@ export interface TreeData {
 
 export type NodeType = HierarchyPointNode<TreeData>
 
-export type LinkType = HierarchyLink<TreeData>
+export type LinkType = HierarchyPointLink<TreeData>
