@@ -1,5 +1,4 @@
 import React from "react"
-import { Group } from "@visx/group"
 import { useTransition, animated } from "react-spring"
 
 import Node from "./Node"
