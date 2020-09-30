@@ -11,6 +11,8 @@ export interface TreeData {
         year: string,
     },
     isExpanded?: boolean
+    x0?: number,
+    y0?: number,
     name: string,
     children: this[],
 }

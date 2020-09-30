@@ -55,6 +55,10 @@ export default function Tree(props: TreeProps) {
                             <Nodes
                                 nodes={tree.descendants()}
                                 onNodeClick={node => {
+                                    if (!isExpanded(node)) {
+                                        node.data.x0 = node.x
+                                        node.data.y0 = node.y
+                                    }
                                     node.data.isExpanded = !isExpanded(node)
                                     forceUpdate()
                                 }}
