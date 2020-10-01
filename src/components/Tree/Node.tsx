@@ -39,16 +39,13 @@ const RootNode = (props: NodeProps) => {
 
 const ParentNode = (props: NodeProps) => {
     const { node, onNodeClick } = props
-    const center = {
-        x: -WIDTH / 2,
-        y: -HEIGHT / 2,
-    }
     return (
         <>
             <rect
                 width={WIDTH}
                 height={HEIGHT}
-                {...center}
+                x={-WIDTH / 2}
+                y={-HEIGHT / 2}
                 fill="#272b4d"
                 stroke={"#03c0dc"}
                 strokeWidth={1}
@@ -66,16 +63,13 @@ const ParentNode = (props: NodeProps) => {
 
 const LeafNode = (props: NodeProps) => {
     const { node, onNodeClick } = props
-    const center = {
-        x: -WIDTH / 2,
-        y: -HEIGHT / 2,
-    }
     return (
         <>
             <rect
                 width={WIDTH}
                 height={HEIGHT}
-                {...center}
+                x={-WIDTH / 2}
+                y={-HEIGHT / 2}
                 fill="none"
                 stroke="#26deb0"
                 strokeDasharray={"2,2"}
