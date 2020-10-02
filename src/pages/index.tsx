@@ -1,10 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import { ParentSize } from "@visx/responsive"
-import { ZoomContainer, ZoomSVG, ZoomType } from "components/Zoom"
+import { ZoomContainer, ZoomSVG } from "components/Zoom"
 import data from "assets/family-tree"
 import Tree from "components/Tree"
 
+/* 
+* Have to do this annoying workaround because we need the zoom components
+* in the header controls. I know it's ugly :(
+*/
 const HEADER_HEIGHT = 5
 
 const Wrapper = styled.div`
@@ -14,16 +17,16 @@ const Wrapper = styled.div`
     place-items: center;
 `
 
-const Header = styled.div`
+const HeaderWrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: ${HEADER_HEIGHT}vh;
-    background: red;
+    background: #03c0dc;
 `
 
-const Body = styled.div`
+const BodyWrapper = styled.div`
     position: absolute;
     top: ${HEADER_HEIGHT}vh;
     left: 0;
@@ -38,8 +41,8 @@ export default function Home() {
             <ZoomContainer>
                 {({ width, height, zoom }) => (
                     <>
-                        <Header />
-                        <Body>
+                        <HeaderWrapper />
+                        <BodyWrapper> 
                             <ZoomSVG width={width} height={height} zoom={zoom}>
                                 <Tree
                                     width={width}
@@ -47,7 +50,7 @@ export default function Home() {
                                     data={data}
                                 />
                             </ZoomSVG>
-                        </Body>
+                        </BodyWrapper>
                     </>
                 )}
             </ZoomContainer>
