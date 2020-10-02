@@ -8,12 +8,13 @@ export { default as DataConsumer } from "./Consumer"
 export { default as DataUpdater } from "./Updater"
 
 export type DataContextType = {
-    // zoom: ZoomType,
-    // setZoom: (zoom: ZoomType) => void,
+    zoom?: ZoomType,
+    setZoom: (zoom: ZoomType) => void,
     tree?: NodeType
     setTree: (value: NodeType) => void
 }
 
 export const DataContext = React.createContext<DataContextType>({
+    setZoom: (value) => { return },
     setTree: (value) => { return },
 })

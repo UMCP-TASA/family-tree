@@ -4,50 +4,32 @@ import { ZoomContainer, ZoomSVG } from "components/Zoom"
 import data from "assets/family-tree"
 import Tree from "components/Tree"
 import Header from "components/Header"
-import { DataProvider } from "components/DataContext"
-
-/*
- * Have to do this annoying workaround because we need the zoom components
- * in the header controls. I know it's ugly :(
- */
-const HEADER_HEIGHT = 5
+import { DataProvider, DataUpdater } from "components/DataContext"
 
 const Wrapper = styled.div`
     width: 100vw;
-    height: ${100 - HEADER_HEIGHT}vh;
+    height: 100vh;
     display: grid;
     place-items: center;
-`
-
-const HeaderWrapper = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: ${HEADER_HEIGHT}vh;
-    background: #03c0dc;
+    grid-template-rows: 5% 1fr;
 `
 
 const BodyWrapper = styled.div`
-    position: absolute;
-    top: ${HEADER_HEIGHT}vh;
-    left: 0;
     width: 100%;
-    height: ${100 - HEADER_HEIGHT}vh;
+    height: 100%;
     background: #272b4d;
 `
 
 export default function Home() {
     return (
-        <Wrapper>
-            <DataProvider>
-                <ZoomContainer>
-                    {({ width, height, zoom }) => (
-                        <>
-                            <HeaderWrapper>
-                                <Header zoom={zoom} />
-                            </HeaderWrapper>
-                            <BodyWrapper>
+        <DataProvider>
+            <Wrapper>
+                <Header />
+                <BodyWrapper>
+                    <ZoomContainer>
+                        {({ width, height, zoom }) => (
+                            <>
+                                <DataUpdater zoom={zoom} />
                                 <ZoomSVG
                                     width={width}
                                     height={height}
@@ -59,11 +41,11 @@ export default function Home() {
                                         data={data}
                                     />
                                 </ZoomSVG>
-                            </BodyWrapper>
-                        </>
-                    )}
-                </ZoomContainer>
-            </DataProvider>
-        </Wrapper>
+                            </>
+                        )}
+                    </ZoomContainer>
+                </BodyWrapper>
+            </Wrapper>
+        </DataProvider>
     )
 }
