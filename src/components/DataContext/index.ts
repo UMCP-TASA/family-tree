@@ -15,6 +15,6 @@ export type DataContextType = {
 }
 
 export const DataContext = React.createContext<DataContextType>({
-    setZoom: (value) => { return },
-    setTree: (value) => { return },
+    setZoom: (__) => { return },
+    setTree: (__) => { return },
 })

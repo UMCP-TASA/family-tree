@@ -8,6 +8,7 @@ import {
 } from "@visx/responsive/lib/enhancers/withParentSize"
 
 import { ZoomType } from "."
+import { ZoomProps } from "@visx/zoom/lib/Zoom"
 
 export type PassedProps = {
     width: number
@@ -16,12 +17,12 @@ export type PassedProps = {
 }
 
 export type ContainerProps = WithParentSizeProps &
-    WithParentSizeProvidedProps & {
+    WithParentSizeProvidedProps & Omit<ZoomProps, "width" | "height" | "children"> & {
         children: (passed: PassedProps) => React.ReactNode
     }
 
 function Container(props: ContainerProps) {
-    const { parentWidth = 1000, parentHeight = 800, children } = props
+    const { parentWidth = 1000, parentHeight = 800, children, ...rest } = props
     const width = parentWidth * 0.99
     const height = parentHeight * 0.99
 
@@ -33,6 +34,15 @@ function Container(props: ContainerProps) {
             scaleXMax={4}
             scaleYMin={1 / 2}
             scaleYMax={4}
+            transformMatrix={{
+                scaleX: 1,
+                scaleY: 1,
+                translateX: 522,
+                translateY: 196,
+                skewX: 0,
+                skewY: 0,
+            }}
+            {...rest}
         >
             {zoom => children({ width, height, zoom })}
         </Zoom>
