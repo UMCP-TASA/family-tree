@@ -27,25 +27,13 @@ export default function Search(props: Props) {
                 if (nameToFind && nameToFind !== "" && tree && zoom) {
                     const matches = findNodeFromName(nameToFind, tree)
 
-                    if (matches.length > 0) {
-                        //console.log(`Midpoint: ${width / 2}, ${height / 2}`)
-                        //console.log(`Node: ${matches[0].x}, ${matches[0].y}`)
-                        
-                        const x = matches[0].x - width/2
-                        const y = matches[0].y - height/2
-                        // zoom.translateTo({
-                        //     x: 0,
-                        //     y: 0,
-                        // })
-                        //console.log(`Translate: ${x}, ${y}`)
-                        
+                    if (matches.length > 0) {                       
+                        const x = matches[0].y - width/2
+                        const y = matches[0].x - height/2
+                                  
                         zoom.translateTo({
                             x: -x, y: -y,
                         })
-                        //console.log(`New zoom: ${zoom.transformMatrix.translateX}, ${zoom.transformMatrix.translateY}`)
-                        console.log(zoom.toString())
-                    } else {
-                        console.log("no matches found")
                     }
                 }
                 //setNameToFind(e.target.value)

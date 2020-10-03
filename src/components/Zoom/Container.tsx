@@ -35,10 +35,10 @@ function Container(props: ContainerProps) {
             scaleYMin={1 / 2}
             scaleYMax={4}
             transformMatrix={{
-                scaleX: 1,
-                scaleY: 1,
-                translateX: 522,
-                translateY: 196,
+                scaleX: 0.9,
+                scaleY: 0.9,
+                translateX: 0,
+                translateY: 0,
                 skewX: 0,
                 skewY: 0,
             }}

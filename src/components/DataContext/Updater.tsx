@@ -7,10 +7,11 @@ import { ZoomType } from "components/Zoom"
 type Props = {
     tree?: NodeType
     zoom?: ZoomType
+    children?: React.ReactNode
 }
 
 export default function TreeUpdater(props: Props) {
-    const { tree, zoom } = props
+    const { tree, zoom, children } = props
     const { setTree, setZoom } = React.useContext(DataContext)
 
     React.useEffect(() => {
@@ -18,5 +19,5 @@ export default function TreeUpdater(props: Props) {
         if (zoom) setZoom(zoom)
     }, [tree])
 
-    return <></>
+    return <>{children}</>
 }
