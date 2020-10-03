@@ -2550,4 +2550,4 @@ const Cindy: TreeData = {
 }
 
 
-export default Cindy
+export default data

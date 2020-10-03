@@ -59,14 +59,19 @@ export default function Nodes(props: NodesProps) {
     })
     return (
         <>
-            {/* {nodes.map(node => (
-                <Node
-                    node={node}
+            {nodes.map(node => (
+                <Group
+                    top={node.x}
+                    left={node.y}
+                    onClick={() => onNodeClick(node)}
+                    style={{ cursor: "pointer" }}
+                    id={node.data.attributes.id}
                     key={node.data.attributes.id}
-                    onNodeClick={onNodeClick}
-                />
-            ))} */}
-            {transitions.map(({ item, key, props }) => (
+                >
+                    <Node node={node} onNodeClick={onNodeClick} />
+                </Group>
+            ))}
+            {/* {transitions.map(({ item, key, props }) => (
                 <AnimatedGroup
                     opacity={props.opacity}
                     top={item.x}
@@ -79,7 +84,7 @@ export default function Nodes(props: NodesProps) {
                 >
                     <Node node={item} onNodeClick={onNodeClick} />
                 </AnimatedGroup>
-            ))}
+            ))} */}
         </>
     )
 }

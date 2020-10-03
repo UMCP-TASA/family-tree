@@ -40,6 +40,7 @@ export default function Home() {
                                         height={height}
                                         data={data}
                                     />
+                                    
                                 </ZoomSVG>
                             </>
                         )}
