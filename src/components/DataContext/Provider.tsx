@@ -1,8 +1,7 @@
-import { HierarchyNode, HierarchyPointNode } from "@visx/hierarchy/lib/types"
+import React from "react"
 import { NodeType } from "components/Tree"
 import { ZoomType } from "components/Zoom"
-import React from "react"
-import { DataContext } from "."
+import { DataContext, DataContextValue } from "."
 
 type Props = {
     children: React.ReactNode
@@ -10,37 +9,32 @@ type Props = {
 
 export default function Provider(props: Props) {
     const { children } = props
-    const [rawTree, rawSetTree] = React.useState<NodeType>()
-    const [rawZoom, rawSetZoom] = React.useState<ZoomType>()
-    const [rawForceUpdate, rawSetForceUpdate] = React.useState<() => void>(() => { console.log("Force update not yet implemented") })
+    const [rawZoom, setZoom] = React.useState<ZoomType>()
+    const [rawTree, setTree] = React.useState<NodeType>()
+    const [rawWidth, setWidth] = React.useState(0)
+    const [rawHeight, setHeight] = React.useState(0)
 
     const contextValue = React.useMemo(() => {
-        function setTree(newValue: NodeType) {
-            rawSetTree(newValue)
-        }
+        function setData(newValue: DataContextValue) {
+            const { zoom, tree, width, height} = newValue
 
-        function setZoom(newValue: ZoomType) {
-            rawSetZoom(newValue)
-        }
-
-        function setForceTreeUpdate(newValue: () => void) {
-            rawSetForceUpdate(newValue)
+            if(zoom) setZoom(zoom)
+            if(tree) setTree(tree)
+            if(width) setWidth(width)
+            if(height) setHeight(height)
         }
 
         return {
-            tree: rawTree,
-            setTree,
             zoom: rawZoom,
-            setZoom,
-            forceTreeUpdate: rawForceUpdate,
-            setForceTreeUpdate,
+            tree: rawTree,
+            width: rawWidth,
+            height: rawHeight,
+            setData
         }
-    }, [rawTree, rawSetTree, rawZoom, rawSetZoom, rawForceUpdate, rawSetForceUpdate])
+    }, [rawTree, rawZoom, rawWidth, rawHeight])
 
     return (
-        <DataContext.Provider
-            value={contextValue}
-        >
+        <DataContext.Provider value={contextValue}>
             {children}
         </DataContext.Provider>
     )

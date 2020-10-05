@@ -32,13 +32,13 @@ const ControlWrapper = styled.div`
 
 export default function Header(props: Props) {
     //const { zoom } = props
-    const { zoom, tree } = React.useContext(DataContext)
+    const { zoom, tree, width, height } = React.useContext(DataContext)
 
     return (
         <Wrapper>
             <HomeWrapper />
             <SearchWrapper>
-                <Search zoom={zoom} tree={tree} />
+                <Search zoom={zoom} tree={tree} width={width} height={height}/>
             </SearchWrapper>
 
             <ControlWrapper>

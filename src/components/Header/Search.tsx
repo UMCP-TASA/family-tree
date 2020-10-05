@@ -9,7 +9,8 @@ import { DataUpdater } from "components/DataContext"
 type Props = {
     zoom?: ZoomType
     tree?: NodeType
-    setTree: (value: NodeType) => void
+    width?: number,
+    height?: number,
 }
 
 const Wrapper = styled.div`
@@ -18,10 +19,9 @@ const Wrapper = styled.div`
 `
 
 export default function Search(props: Props) {
-    const { zoom, tree, setTree } = props
+    const { zoom, tree, width = 100, height = 100 } = props
     const [focusedNode, setFocusedNode] = React.useState<NodeType>()
-    const width = 2028
-    const height = 1253
+ 
     return (
         <TextInput
             onChange={e => {

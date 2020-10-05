@@ -7,34 +7,17 @@ export { default as DataProvider } from "./Provider"
 export { default as DataConsumer } from "./Consumer"
 export { default as DataUpdater } from "./Updater"
 
-// export type DataContextValue = {
-//     zoom?: ZoomType,
-//     tree?: NodeType,
-//     width?: number,
-//     height?: number,
-// }
-
-export type DataContextType = {
+export type DataContextValue = {
     zoom?: ZoomType
-    setZoom: (zoom: ZoomType) => void
     tree?: NodeType
-    setTree: (value: NodeType) => void
-    forceTreeUpdate: () => void
-    setForceTreeUpdate: (value: () => void) => void
+    width?: number
+    height?: number
+}
+
+export type DataContextType = DataContextValue & {
+    setData: (value: DataContextValue) => void
 }
 
 export const DataContext = React.createContext<DataContextType>({
-    setZoom: __ => {
-        return
-    },
-    setTree: __ => {
-        return
-    },
-    forceTreeUpdate: () => {
-        console.log("Force tree update not yet set")
-        return
-    },
-    setForceTreeUpdate: () => {
-        return
-    },
+    setData: __ => {},
 })

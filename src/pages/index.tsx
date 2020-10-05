@@ -29,7 +29,7 @@ export default function Home() {
                     <ZoomContainer>
                         {({ width, height, zoom }) => (
                             <>
-                                <DataUpdater zoom={zoom} />
+                                <DataUpdater data={{ width, height, zoom }} />
                                 <ZoomSVG
                                     width={width}
                                     height={height}
@@ -40,7 +40,6 @@ export default function Home() {
                                         height={height}
                                         data={data}
                                     />
-                                    
                                 </ZoomSVG>
                             </>
                         )}
