@@ -28,6 +28,6 @@ module.exports = {
                 path: `${__dirname}/src/assets`,
             },
         },
-        `gatsby-plugin-styled-components`,
+        `gatsby-plugin-material-ui`,
     ],
 }

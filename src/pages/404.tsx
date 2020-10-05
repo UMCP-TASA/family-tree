@@ -1,25 +1,27 @@
 import React from "react"
-import styled from "styled-components"
-import {Link} from "gatsby"
+import { makeStyles, Typography } from "@material-ui/core"
+import Button from "components/Button"
 
-const Wrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-`
+const useStyles = makeStyles(theme => ({
+    root: {
+        width: "100vw",
+        height: "100vh",
+        display: "grid",
+        placeItems: "center",
+    },
+    link: {
 
-const Header = styled.h1`
-    text-align: center;
-`
-
-const StyledLink = styled(Link)``
+    }
+}))
 
 export default function NotFoundPage() {
+    const classes = useStyles()
     return (
-        <Wrapper>
-            <Header>Oops page couldn't be found</Header>
-            <StyledLink to="/">Return to Family Tree</StyledLink>
-        </Wrapper>
+        <div className={classes.root}>
+            <Typography variant="h1" align="center">
+                Oops page couldn't be found
+            </Typography>
+            <Button to="/">Return to Family Tree</Button>
+        </div>
     )
 }

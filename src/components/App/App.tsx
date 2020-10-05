@@ -1,4 +1,7 @@
 import React from "react"
+import { ThemeProvider } from "@material-ui/core/styles"
+import CssBaseline from "@material-ui/core/CssBaseline"
+import theme from "./theme"
 
 import GlobalStyles from "./GlobalStyles"
 
@@ -8,9 +11,10 @@ type Props = {
 
 export default ({ children }: Props) => {
     return (
-        <>
-            <GlobalStyles />
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {/* <GlobalStyles /> */}
             {children}
-        </>
+        </ThemeProvider>
     )
 }

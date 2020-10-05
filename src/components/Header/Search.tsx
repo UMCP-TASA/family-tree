@@ -1,10 +1,8 @@
 import React from "react"
-import styled from "styled-components"
+import { makeStyles, TextField} from "@material-ui/core"
 import { ZoomType } from "components/Zoom"
 import { NodeType } from "components/Tree"
-import TextInput from "components/TextInput"
 import { findNodeFromName } from "@utils"
-import { DataUpdater } from "components/DataContext"
 
 type Props = {
     zoom?: ZoomType
@@ -13,17 +11,18 @@ type Props = {
     height?: number,
 }
 
-const Wrapper = styled.div`
-    position: relative;
-    width: 700px;
-`
-
 export default function Search(props: Props) {
     const { zoom, tree, width = 100, height = 100 } = props
     const [focusedNode, setFocusedNode] = React.useState<NodeType>()
  
     return (
-        <TextInput
+        <TextField
+            id="search-field"
+            label="Search"
+            color="secondary"
+            variant="outlined"
+            margin="dense"
+            fullWidth
             onChange={e => {
                 const nameToFind = e.target.value
                 if (nameToFind && nameToFind !== "" && tree && zoom) {
