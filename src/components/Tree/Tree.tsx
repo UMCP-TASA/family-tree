@@ -40,7 +40,7 @@ function Tree(props: TreeProps) {
             >
                 {tree => (
                     <>
-                        <DataUpdater tree={tree} />
+                        <DataUpdater tree={tree}/>
                         <Group top={0} left={0}>
                             <g>
                                 <Links links={tree.links()} />

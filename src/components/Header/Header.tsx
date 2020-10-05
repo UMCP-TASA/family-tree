@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     justify-items: space-between;
 `
 const HomeWrapper = styled.div`
-    grid-column: 1 / span 2
+    grid-column: 1 / span 2;
 `
 
 const SearchWrapper = styled.div`

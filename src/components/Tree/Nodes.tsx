@@ -68,7 +68,7 @@ export default function Nodes(props: NodesProps) {
                     id={node.data.attributes.id}
                     key={node.data.attributes.id}
                 >
-                    <Node node={node} onNodeClick={onNodeClick} />
+                    <Node node={node} />
                 </Group>
             ))}
             {/* {transitions.map(({ item, key, props }) => (
