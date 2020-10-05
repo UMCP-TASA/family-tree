@@ -1,4 +1,3 @@
-import { notEqual } from "assert"
 import { NodeType } from "components/Tree"
 
 export const isExpanded = (node: NodeType) => node.data.isExpanded || node.data.isExpanded == undefined

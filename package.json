@@ -14,6 +14,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "@visx/event": "^1.0.0",
     "@visx/gradient": "^1.0.0",
     "@visx/group": "^1.0.0",
@@ -25,6 +26,7 @@
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.67",
     "gatsby-alias-imports": "^1.0.4",
+    "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-plugin-styled-components": "^3.3.12",
     "gatsby-source-filesystem": "^2.3.32",
     "react": "^16.12.0",
