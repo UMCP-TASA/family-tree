@@ -13,9 +13,9 @@
             "@utils": ["src/utils"],
             "assets/*": ["src/assets/*"],
             "@assets": ["src/assets"],
-            "root/*": ["*"],
+            "root/*": ["*"]
         },
-        "typeRoots": ["./node_modules/@types", "./src/declarations"],
+        "typeRoots": ["./node_modules/@types", "./src/types"],
         // "allowJs": true,
         // "checkJs": true,
         "jsx": "react",

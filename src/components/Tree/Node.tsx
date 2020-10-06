@@ -1,4 +1,5 @@
 import React from "react"
+import { useTheme } from "@material-ui/core"
 import { Text } from "@visx/text"
 import { TextProps } from "@visx/text/lib/Text"
 
@@ -19,8 +20,8 @@ const FONT_OPTIONS: TextProps = {
 
 export type NodeProps = {
     node: NodeType
-    width?: number,
-    height?: number,
+    width?: number
+    height?: number
 }
 
 const RootNode = (props: NodeProps) => {
@@ -40,6 +41,7 @@ const RootNode = (props: NodeProps) => {
 const ParentNode = (props: NodeProps) => {
     const { node, width = WIDTH, height = HEIGHT } = props
     const isFocused = node.data.isFocused // not currently working without way to force tree to update
+    const theme = useTheme()
     return (
         <>
             <rect
@@ -47,13 +49,17 @@ const ParentNode = (props: NodeProps) => {
                 height={height}
                 x={-width / 2}
                 y={-height / 2}
-                fill="#272b4d"
-                stroke={isFocused ? "green" : "#03c0dc"}
+                fill={theme.palette.background.default}
+                stroke={theme.palette.parentNode.main}
                 strokeWidth={1}
             />
             <Text
                 width={width}
-                fill={isExpanded(node) ? "white" : "#26deb0"}
+                fill={
+                    isExpanded(node)
+                        ? theme.palette.parentNode.contrastText
+                        : theme.palette.leafNode.contrastText
+                }
                 {...FONT_OPTIONS}
             >
                 {node.data.name}
@@ -64,6 +70,7 @@ const ParentNode = (props: NodeProps) => {
 
 const LeafNode = (props: NodeProps) => {
     const { node, width = WIDTH, height = HEIGHT } = props
+    const theme = useTheme()
     return (
         <>
             <rect
@@ -72,12 +79,16 @@ const LeafNode = (props: NodeProps) => {
                 x={-width / 2}
                 y={-height / 2}
                 fill="none"
-                stroke="#26deb0"
+                stroke={theme.palette.leafNode.main}
                 strokeDasharray={"2,2"}
                 strokeOpacity={0.6}
                 rx={12}
             />
-            <Text width={width} fill="#26deb0" {...FONT_OPTIONS}>
+            <Text
+                width={width}
+                fill={theme.palette.leafNode.contrastText}
+                {...FONT_OPTIONS}
+            >
                 {node.data.name}
             </Text>
         </>
@@ -86,7 +97,6 @@ const LeafNode = (props: NodeProps) => {
 
 export default function Node(props: NodeProps) {
     const { node, width = WIDTH, height = HEIGHT } = props
-
 
     if (node.depth === 0) {
         return <RootNode node={node} width={width} height={height} />

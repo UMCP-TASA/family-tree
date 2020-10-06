@@ -1,4 +1,5 @@
 import React from "react"
+import { useTheme } from "@material-ui/core"
 import { LinkHorizontal } from "@visx/shape"
 import { LinkHorizontalDiagonalProps } from "@visx/shape/lib/shapes/link/diagonal/LinkHorizontal"
 import { LinkType, NodeType } from "."
@@ -31,6 +32,7 @@ interface TransitionOutput extends React.CSSProperties {
 
 export default function Links(props: LinksProps) {
     const { links, ...rest } = props
+    const theme = useTheme()
     // const transitions = useTransition<LinkType, TransitionOutput>(
     //     links,
     //     link => keyAccessor(link),
@@ -87,7 +89,7 @@ export default function Links(props: LinksProps) {
                 <LinkHorizontal
                     data={link}
                     {...rest}
-                    stroke="rgb(254,110,158,0.6)"
+                    stroke={theme.palette.link.main}
                     strokeWidth="1"
                     fill="none"
                     key={keyAccessor(link)}
