@@ -9,16 +9,11 @@ import {
     MenuItem,
     TextField,
 } from "@material-ui/core"
-import { ZoomType } from "components/Zoom"
+import { DataContext } from "components/DataContext"
 import { NodeType } from "components/Tree"
 import { findNodeFromName } from "@utils"
 
-type Props = {
-    zoom?: ZoomType
-    tree?: NodeType
-    width?: number
-    height?: number
-}
+type Props = {}
 
 const useStyles = makeStyles(theme => ({
     menuItem: {
@@ -28,7 +23,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function Search(props: Props) {
-    const { zoom, tree, width = 100, height = 100 } = props
+    const { zoom, tree, width = 10, height = 10 } = React.useContext(
+        DataContext
+    )
     const classes = useStyles()
     // const [focusedNode, setFocusedNode] = React.useState<NodeType>()
 
