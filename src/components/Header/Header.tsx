@@ -1,5 +1,6 @@
 import React from "react"
 import { AppBar, Toolbar, Grid, makeStyles } from "@material-ui/core"
+import Button from "components/Button"
 
 import { DataContext } from "components/DataContext"
 import Search from "./Search"
@@ -36,9 +37,9 @@ export default function Header(props: Props) {
                     </Grid>
 
                     <Grid item md={3}>
-                        <button onClick={zoom?.center}>Center</button>
-                        <button onClick={zoom?.reset}>Reset</button>
-                        <button onClick={zoom?.clear}>Clear</button>
+                        <Button onClick={zoom?.center}>Center</Button>
+                        <Button onClick={zoom?.reset}>Reset</Button>
+                        <Button onClick={zoom?.clear}>Clear</Button>
                     </Grid>
                 </Grid>
             </Toolbar>

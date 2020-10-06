@@ -1,4 +1,5 @@
 import { NodeType } from "components/Tree"
+import { ZoomType } from "components/Zoom"
 
 export const isExpanded = (node: NodeType) => node.data.isExpanded || node.data.isExpanded == undefined
 

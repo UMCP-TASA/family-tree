@@ -1,5 +1,5 @@
 import React from "react"
-import { makeStyles, TextField} from "@material-ui/core"
+import { makeStyles, TextField } from "@material-ui/core"
 import { ZoomType } from "components/Zoom"
 import { NodeType } from "components/Tree"
 import { findNodeFromName } from "@utils"
@@ -7,14 +7,14 @@ import { findNodeFromName } from "@utils"
 type Props = {
     zoom?: ZoomType
     tree?: NodeType
-    width?: number,
-    height?: number,
+    width?: number
+    height?: number
 }
 
 export default function Search(props: Props) {
     const { zoom, tree, width = 100, height = 100 } = props
     const [focusedNode, setFocusedNode] = React.useState<NodeType>()
- 
+
     return (
         <TextField
             id="search-field"
@@ -33,12 +33,14 @@ export default function Search(props: Props) {
                         node.data.isFocused = true
                         setFocusedNode(node)
 
-                        const x = node.y - width / 2
-                        const y = node.x - height / 2
+                        const inverseCentroid = zoom.applyInverseToPoint({
+                            x: width / 2,
+                            y: height / 2,
+                        })
 
-                        zoom.translateTo({
-                            x: -x,
-                            y: -y,
+                        zoom.translate({
+                            translateX: inverseCentroid.x - node.y,
+                            translateY: inverseCentroid.y - node.x,
                         })
                     } else {
                         if (focusedNode) {

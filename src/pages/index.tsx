@@ -12,12 +12,13 @@ const useStyles = makeStyles(theme => ({
         height: "100vh",
         display: "grid",
         placeItems: "center",
-        gridTemplateRows: `${theme.mixins.toolbar.minHeight} 1fr`,
+        gridTemplateRows: `${theme.mixins.toolbar.minHeight}px 1fr`,
     },
     header: {
         gridRow: "1",
     },
     body: {
+        gridRow: "2",
         width: "100%",
         height: "100%",
         background: theme.palette.background.default,

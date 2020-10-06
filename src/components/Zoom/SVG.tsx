@@ -33,7 +33,8 @@ export default function SVG(props: Props) {
                 }}
                 onDoubleClick={event => {
                     const point = localPoint(event) || { x: 0, y: 0 }
-                    zoom.scale({ scaleX: 1.1, scaleY: 1.1, point })
+                    console.log(zoom.transformMatrix)
+                    //zoom.scale({ scaleX: 1.1, scaleY: 1.1, point })
                 }}
             />
             <g transform={zoom.toString()}>
