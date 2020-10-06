@@ -1,65 +1,70 @@
 import React from "react"
 import { useTransition, animated } from "react-spring"
-import { Group } from "@visx/group"
 
 import Node from "./Node"
 import { NodeType } from "."
-import { getTopLeft, findCollapsedParent } from "@utils"
+import { getTopLeft, findCollapsedParent, getX0, getY0 } from "@utils"
 
 type NodesProps = {
     nodes: NodeType[]
     onNodeClick: (node: NodeType) => void
 }
 
-const AnimatedGroup = animated(Group)
+const transformString = ({ top, left }: { top: number; left: number }) =>
+    `translate(${left}, ${top})`
 
 export default function Nodes(props: NodesProps) {
     const { nodes, onNodeClick } = props
     const transitions = useTransition(nodes, node => node.data.attributes.id, {
         from: node => {
-            // const parentTopLeft = node.parent
-            //     ? getTopLeft(node.parent)
-            //     : { top: 0, left: 0 }
+            const parentTopLeft = node.parent
+                ? getTopLeft(node.parent)
+                : { top: 0, left: 0 }
             return {
                 opacity: 0,
-                //...parentTopLeft,
+                transform: transformString(parentTopLeft),
             }
         },
         enter: node => {
-            //const topLeft = getTopLeft(node)
+            const topLeft = getTopLeft(node)
             return {
                 opacity: 1,
-                //...topLeft,
+                transform: transformString(topLeft),
             }
         },
         update: node => {
-            //const topLeft = getTopLeft(node)
+            const topLeft = getTopLeft(node)
             return {
                 opacity: 1,
-                //...topLeft,
+                transform: transformString(topLeft),
             }
         },
         leave: node => {
-            // let collapsedParentPosition = {}
-            // if (node.parent) {
-            //     const collapsedParent = findCollapsedParent(node.parent)
-            //     collapsedParentPosition = {
-            //         top: collapsedParent.data.x0 ? collapsedParent.data.x0 : collapsedParent.x,
-            //         left: collapsedParent.data.y0 ? collapsedParent.data.y0 : collapsedParent.y,
-            //     }
-            // } else {
-            //     collapsedParentPosition = { top: 0, left: 0 }
-            // }
+            let collapsedParentPosition = {
+                top: 0,
+                left: 0,
+            }
+            if (node.parent) {
+                const collapsedParent = findCollapsedParent(node.parent)
+                collapsedParentPosition = {
+                    top: collapsedParent
+                        ? getX0(collapsedParent)
+                        : node.parent.x,
+                    left: collapsedParent
+                        ? getY0(collapsedParent)
+                        : node.parent.y,
+                }
+            }
 
             return {
                 opacity: 0,
-                //...collapsedParentPosition,
+                transform: transformString(collapsedParentPosition),
             }
         },
     })
     return (
         <>
-            {nodes.map(node => (
+            {/* {nodes.map(node => (
                 <Group
                     top={node.x}
                     left={node.y}
@@ -70,21 +75,26 @@ export default function Nodes(props: NodesProps) {
                 >
                     <Node node={node} />
                 </Group>
-            ))}
-            {/* {transitions.map(({ item, key, props }) => (
-                <AnimatedGroup
+            ))} */}
+            {transitions.map(({ item, key, props }) => (
+                <animated.g
                     opacity={props.opacity}
-                    top={item.x}
-                    left={item.y}
-                    //transform={`translate(${props.left?.getValue()}, ${props.top?.getValue()})`}
+                    transform={props.transform}
                     onClick={() => onNodeClick(item)}
-                    style={{ cursor: "pointer" }}
+                    style={{
+                        cursor: "pointer",
+                        pointerEvents: props.opacity
+                            ? props.opacity.interpolate(v =>
+                                  (v as number) < 0.5 ? "none" : "all"
+                              )
+                            : "none",
+                    }}
                     id={key}
                     key={key}
                 >
-                    <Node node={item} onNodeClick={onNodeClick} />
-                </AnimatedGroup>
-            ))} */}
+                    <Node node={item} />
+                </animated.g>
+            ))}
         </>
     )
 }
