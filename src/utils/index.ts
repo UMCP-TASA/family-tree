@@ -35,16 +35,17 @@ export function findNodeFromName(nameToFind: string, node: NodeType): NodeType[]
     // Currrently a depth first search
     const stack: NodeType[] = [node]
     const name = nameToFind.toUpperCase()
+    const results = []
 
     while(stack.length > 0) {
         const currentNode = stack.pop() as NodeType
-        if(name == currentNode.data.name.toUpperCase())
-            return [currentNode]
+        if(currentNode.data.name.toUpperCase().startsWith(name))
+            results.push(currentNode)
 
         currentNode.children?.forEach((childNode) => {
             stack.push(childNode)
         })
     }
 
-    return []
+    return results
 }
