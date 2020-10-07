@@ -1,5 +1,6 @@
 import React from "react"
 import { useTheme } from "@material-ui/core"
+import { LinkHorizontal} from "@visx/shape"
 import { LinkType } from "."
 import { useTransition, animated } from "react-spring"
 import { findCollapsedParent, getX0, getY0 } from "@utils"
@@ -99,7 +100,7 @@ export default function Links(props: LinksProps) {
                     sy={style.sy}
                     tx={style.tx}
                     ty={style.ty}
-                    // @ts-ignore Not sure why stroke is invalid here
+                    // @ts-ignore Stroke is invalid here hecause of Animated but it's fine
                     stroke={theme.palette.link.main}
                     opacity={style.opacity}
                     strokeWidth="1"
