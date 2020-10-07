@@ -2,9 +2,9 @@ import React from "react"
 import { useTheme } from "@material-ui/core"
 import { Text } from "@visx/text"
 import { TextProps } from "@visx/text/lib/Text"
-
 import { NodeType } from "."
 import { isExpanded } from "@utils"
+import { LogoSVG } from "components/Logo"
 
 const WIDTH = 50
 const HEIGHT = 25
@@ -34,6 +34,7 @@ const RootNode = (props: NodeProps) => {
             <Text width={textWidth} fill="#71248e" {...FONT_OPTIONS}>
                 {node.data.name}
             </Text>
+            {/* <LogoSVG width={width} height={width}/> */}
         </>
     )
 }

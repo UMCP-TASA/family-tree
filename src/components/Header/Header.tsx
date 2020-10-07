@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Grid, makeStyles } from "@material-ui/core"
 
 import Search from "./Search"
 import Controls from "./Controls"
-import Logo from "./Logo"
+import Logo from "components/Logo"
 
 type Props = {}
 
@@ -26,7 +26,12 @@ export default function Header(props: Props) {
                     spacing={3}
                 >
                     <Grid item md={3}>
-                        <Logo />
+                        <a
+                            href="https://umcptasa.com"
+                            aria-label="Link to UMCP TASA website"
+                        >
+                            <Logo />
+                        </a>
                     </Grid>
                     <Grid item md={6}>
                         <Search />
