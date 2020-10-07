@@ -3,11 +3,13 @@ import { makeStyles } from "@material-ui/core"
 
 import { DataProvider, DataUpdater } from "components/DataContext"
 import { ZoomContainer, ZoomSVG } from "components/Zoom"
-import data from "assets/family-tree"
+//import data from "assets/family-tree"
 import Tree from "components/Tree"
 import Header from "components/Header"
 import { WIP } from "components/Modals"
 import SEO from "components/Seo"
+
+import data from "../assets/familyTree.json"
 
 const useStyles = makeStyles(theme => ({
     root: {
