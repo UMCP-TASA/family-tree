@@ -48,13 +48,13 @@ The [`Nodes`](src/components/Tree/Nodes.tsx) component handles the animations an
 
 # Things to Work On
 
-- [ ] Add more visual way of modifying the tree instead of via the Google Sheet
-- [ ] Add vertical orientation
-- [ ] Improve mobile support
-- [ ] Fix overlapping nodes
-- [ ] Add dark/light theme
-- [ ] Better connector curves
-- [ ] Add highlighting/visual change when nodes are found via search
+-   [ ] Add more visual way of modifying the tree instead of via the Google Sheet
+-   [ ] Add vertical orientation
+-   [ ] Improve mobile support
+-   [ ] Fix overlapping nodes
+-   [ ] Add dark/light theme
+-   [ ] Better connector curves
+-   [ ] Add highlighting/visual change when nodes are found via search
     -   Need a way to re-trigger a forced tree update
 -   [ ] Allow search to find nodes that aren't currently expanded and expand them
     -   Perhaps make use of the fact that nodes can still be reached via `node.data.children` and set isExpanded manually
