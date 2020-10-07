@@ -4,9 +4,8 @@ import { Text } from "@visx/text"
 import { TextProps } from "@visx/text/lib/Text"
 import { NodeType } from "."
 import { isExpanded } from "@utils"
-import { LogoSVG } from "components/Logo"
 
-const WIDTH = 50
+const WIDTH = 75
 const HEIGHT = 25
 
 const FONT_OPTIONS: TextProps = {

@@ -35,20 +35,18 @@ function Tree(props: TreeProps) {
                 size={[yMax, xMax]}
                 root={root}
                 separation={(a, b) =>
-                    (a.parent == b.parent ? 20 : 10) / a.depth
+                    (a.parent == b.parent ? 10 : 5)
                 }
+                
             >
                 {tree => (
                     <>
                         <DataUpdater data={{tree}}/>
                         <Group top={0} left={0}>
-                            <g>
+                            <g id="links-group">
                                 <Links links={tree.links()} />
-                                {/* {tree.links().map((link, i) => (
-                                <Links links={tree}>
-                            ))} */}
                             </g>
-                            <g>
+                            <g id="nodes-group">
                                 <Nodes
                                     nodes={tree.descendants()}
                                     onNodeClick={node => {
