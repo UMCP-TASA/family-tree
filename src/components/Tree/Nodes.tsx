@@ -1,6 +1,7 @@
 import React from "react"
 import { useTransition, animated } from "react-spring"
 
+import { AnimatedNode } from "./Node2"
 import Node from "./Node"
 import { NodeType } from "."
 import { getTopLeft, findCollapsedParent, getX0, getY0 } from "@utils"
@@ -15,58 +16,55 @@ const transformString = ({ top, left }: { top: number; left: number }) =>
 
 export default function Nodes(props: NodesProps) {
     const { nodes, onNodeClick } = props
-    const transitions = useTransition(
-        nodes,
-        {
-            //const transitions = useTransition(nodes, node => node.data.attributes.id, {
-            key: node => node.data.attributes.id,
-            from: node => {
-                const parentTopLeft = node.parent
-                    ? getTopLeft(node.parent)
-                    : { top: 0, left: 0 }
-                return {
-                    opacity: 0,
-                    transform: transformString(parentTopLeft),
-                }
-            },
-            enter: node => {
-                const topLeft = getTopLeft(node)
-                return {
-                    opacity: 1,
-                    transform: transformString(topLeft),
-                }
-            },
-            update: node => {
-                const topLeft = getTopLeft(node)
-                return {
-                    opacity: 1,
-                    transform: transformString(topLeft),
-                }
-            },
-            leave: node => {
-                let collapsedParentPosition = {
-                    top: 0,
-                    left: 0,
-                }
-                if (node.parent) {
-                    const collapsedParent = findCollapsedParent(node.parent)
-                    collapsedParentPosition = {
-                        top: collapsedParent
-                            ? getX0(collapsedParent)
-                            : node.parent.x,
-                        left: collapsedParent
-                            ? getY0(collapsedParent)
-                            : node.parent.y,
-                    }
-                }
-
-                return {
-                    opacity: 0,
-                    transform: transformString(collapsedParentPosition),
-                }
-            },
+    const transitions = useTransition(nodes, {
+        //const transitions = useTransition(nodes, node => node.data.attributes.id, {
+        key: node => node.data.attributes.id,
+        from: node => {
+            const parentTopLeft = node.parent
+                ? getTopLeft(node.parent)
+                : { top: 0, left: 0 }
+            return {
+                opacity: 0,
+                transform: transformString(parentTopLeft),
+            }
         },
-    )
+        enter: node => {
+            const topLeft = getTopLeft(node)
+            return {
+                opacity: 1,
+                transform: transformString(topLeft),
+            }
+        },
+        update: node => {
+            const topLeft = getTopLeft(node)
+            return {
+                opacity: 1,
+                transform: transformString(topLeft),
+            }
+        },
+        leave: node => {
+            let collapsedParentPosition = {
+                top: 0,
+                left: 0,
+            }
+            if (node.parent) {
+                const collapsedParent = findCollapsedParent(node.parent)
+                collapsedParentPosition = {
+                    top: collapsedParent
+                        ? getX0(collapsedParent)
+                        : node.parent.x,
+                    left: collapsedParent
+                        ? getY0(collapsedParent)
+                        : node.parent.y,
+                }
+            }
+
+            return {
+                opacity: 0,
+                transform: transformString(collapsedParentPosition),
+            }
+        },
+    })
 
     return (
         <>
@@ -100,6 +98,20 @@ export default function Nodes(props: NodesProps) {
                 >
                     <Node node={item} />
                 </animated.g>
+            ))} */}
+            {/* {transitions((style, item) => (
+                <AnimatedNode 
+                    node={item}
+                    opacity={style.opacity}
+                    transform={style.transform}
+                    onClick={() => onNodeClick(item)}
+                    style={{
+                        cursor: "pointer",
+                        pointerEvents: style.opacity.to(v =>
+                            v < 0.5 ? "none" : "all"
+                        ),
+                    }}
+                />
             ))} */}
             {transitions((style, item) => (
                 <animated.g

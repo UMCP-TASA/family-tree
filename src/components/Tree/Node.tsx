@@ -1,5 +1,6 @@
 import React from "react"
 import { useTheme } from "@material-ui/core"
+// import { withTooltip, TooltipWithBounds } from "@visx/tooltip"
 import { Text } from "@visx/text"
 import { TextProps } from "@visx/text/lib/Text"
 import { NodeType } from "."
@@ -106,3 +107,13 @@ export default function Node(props: NodeProps) {
         return <LeafNode node={node} width={width} height={height} />
     }
 }
+
+// type TooltipProps = {
+//     node: NodeType
+// }
+
+// type TooltipData = {
+
+// }
+
+// const Tool = withTooltip(TooltipWithBounds)

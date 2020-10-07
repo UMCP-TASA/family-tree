@@ -25,6 +25,7 @@
     "@visx/responsive": "^1.0.0",
     "@visx/shape": "^1.0.0",
     "@visx/text": "^1.0.0",
+    "@visx/tooltip": "^1.0.0",
     "@visx/zoom": "^1.0.0",
     "gatsby": "^2.24.68",
     "gatsby-alias-imports": "^1.0.4",
