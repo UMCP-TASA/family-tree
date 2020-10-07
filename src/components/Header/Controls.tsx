@@ -4,8 +4,6 @@ import {
     Button,
     IconButton,
     TextField,
-    Input,
-    Slider,
     makeStyles,
 } from "@material-ui/core"
 import { ZoomIn, ZoomOut } from "@material-ui/icons"
@@ -14,10 +12,17 @@ import { DataContext } from "components/DataContext"
 
 type Props = {}
 
+const useStyles = makeStyles(theme => ({
+    input: {
+        textAlign: "center",
+    }
+}))
+
 const isValid = (value: number) => value >= 50 && value <= 400
 
 export default function Controls(props: Props) {
     const { zoom } = React.useContext(DataContext)
+    const classes = useStyles()
 
     const [displayedZoom, setDisplayed] = React.useState(100)
     const scale = zoom ? zoom.transformMatrix.scaleX : 1
@@ -27,7 +32,7 @@ export default function Controls(props: Props) {
     }, [zoom])
 
     return (
-        <Grid container alignItems="center">
+        <Grid container alignItems="center" justify="center">
             <Grid item>
                 <IconButton
                     aria-label="zoom-out"
@@ -56,6 +61,9 @@ export default function Controls(props: Props) {
                             ? ""
                             : "50 < x < 400"
                     }
+                    inputProps={{
+                        className: classes.input
+                    }}
                     onChange={e => {
                         const newScale = Number.parseInt(e.target.value)
                         setDisplayed(newScale)

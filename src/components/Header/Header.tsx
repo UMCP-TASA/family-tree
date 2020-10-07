@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Grid, makeStyles } from "@material-ui/core"
 
 import Search from "./Search"
 import Controls from "./Controls"
+import Logo from "./Logo"
 
 type Props = {}
 
@@ -24,7 +25,9 @@ export default function Header(props: Props) {
                     justify="space-between"
                     spacing={3}
                 >
-                    <Grid item md={3}></Grid>
+                    <Grid item md={3}>
+                        <Logo />
+                    </Grid>
                     <Grid item md={6}>
                         <Search />
                     </Grid>
