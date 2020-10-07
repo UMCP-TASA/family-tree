@@ -1,6 +1,6 @@
 import React from "react"
 import { Tree as VisTree, hierarchy } from "@visx/hierarchy"
-import { TreeData } from "./index"
+import { NodeType, TreeData } from "./index"
 import { Group } from "@visx/group"
 import { LinearGradient } from "@visx/gradient"
 // import { LinkHorizontal } from "@visx/shape"
@@ -16,10 +16,12 @@ export type TreeProps = {
     height: number
     data: TreeData
     orientation?: "horizontal" | "vertical"
+    handleMouseOver: (node: NodeType) => (e: React.MouseEvent) => void
+    hideTooltip: () => void
 }
 
 function Tree(props: TreeProps) {
-    const { width, height, data } = props
+    const { width, height, data, handleMouseOver, hideTooltip } = props
     const yMax = height
     const xMax = width
 
@@ -34,13 +36,11 @@ function Tree(props: TreeProps) {
             <VisTree<TreeData>
                 size={[yMax, xMax]}
                 root={root}
-                separation={(a, b) =>
-                    (a.parent == b.parent ? 10 : 5)
-                }
+                separation={(a, b) => (a.parent == b.parent ? 10 : 5)}
             >
                 {tree => (
                     <>
-                        <DataUpdater data={{tree}}/>
+                        <DataUpdater data={{ tree }} />
                         <Group top={0} left={0}>
                             <g id="links-group">
                                 <Links links={tree.links()} />
@@ -57,6 +57,8 @@ function Tree(props: TreeProps) {
                                         // context.setTree(tree)
                                         forceUpdate()
                                     }}
+                                    handleMouseOver={handleMouseOver}
+                                    hideTooltip={hideTooltip}
                                 />
                             </g>
                         </Group>

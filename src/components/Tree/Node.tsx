@@ -1,10 +1,11 @@
 import React from "react"
-import { useTheme } from "@material-ui/core"
-// import { withTooltip, TooltipWithBounds } from "@visx/tooltip"
+import { Container, useTheme } from "@material-ui/core"
+
 import { Text } from "@visx/text"
 import { TextProps } from "@visx/text/lib/Text"
 import { NodeType } from "."
 import { isExpanded } from "@utils"
+
 
 const WIDTH = 75
 const HEIGHT = 25
@@ -107,13 +108,3 @@ export default function Node(props: NodeProps) {
         return <LeafNode node={node} width={width} height={height} />
     }
 }
-
-// type TooltipProps = {
-//     node: NodeType
-// }
-
-// type TooltipData = {
-
-// }
-
-// const Tool = withTooltip(TooltipWithBounds)

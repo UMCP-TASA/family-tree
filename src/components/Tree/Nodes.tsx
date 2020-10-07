@@ -9,13 +9,15 @@ import { getTopLeft, findCollapsedParent, getX0, getY0 } from "@utils"
 type NodesProps = {
     nodes: NodeType[]
     onNodeClick: (node: NodeType) => void
+    handleMouseOver: (node: NodeType) => (e: React.MouseEvent) => void
+    hideTooltip: () => void,
 }
 
 const transformString = ({ top, left }: { top: number; left: number }) =>
     `translate(${left}, ${top})`
 
 export default function Nodes(props: NodesProps) {
-    const { nodes, onNodeClick } = props
+    const { nodes, onNodeClick, handleMouseOver, hideTooltip } = props
     const transitions = useTransition(nodes, {
         //const transitions = useTransition(nodes, node => node.data.attributes.id, {
         key: node => node.data.attributes.id,
@@ -122,6 +124,8 @@ export default function Nodes(props: NodesProps) {
                         cursor: "pointer",
                         pointerEvents: style.opacity.to(v => v < 0.5 ? "none" : "all")
                     }}
+                    onMouseOver={handleMouseOver(item)}
+                    onMouseOut={hideTooltip}
                 >
                     <Node node={item} />
                 </animated.g>
