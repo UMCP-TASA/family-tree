@@ -11,13 +11,13 @@ export const getTopLeft = (node: NodeType) =>  ({
     left: node.y
 })
 
-export function findCollapsedParent(node: NodeType): NodeType | null {
+export function findCollapsedParent(node: NodeType): NodeType {
     if(!isExpanded(node)) {
         return node
     } else if (node.parent) {
         return findCollapsedParent(node.parent)
     } else {
-        return null
+        return node
     }
 }
 
