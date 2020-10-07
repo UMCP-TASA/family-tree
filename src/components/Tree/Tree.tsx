@@ -37,7 +37,6 @@ function Tree(props: TreeProps) {
                 separation={(a, b) =>
                     (a.parent == b.parent ? 10 : 5)
                 }
-                
             >
                 {tree => (
                     <>

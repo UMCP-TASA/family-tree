@@ -1,10 +1,12 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core"
+
+import { DataProvider, DataUpdater } from "components/DataContext"
 import { ZoomContainer, ZoomSVG } from "components/Zoom"
 import data from "assets/family-tree"
 import Tree from "components/Tree"
 import Header from "components/Header"
-import { DataProvider, DataUpdater } from "components/DataContext"
+import { WIP } from "components/Modals"
 import SEO from "components/Seo"
 
 const useStyles = makeStyles(theme => ({
@@ -31,6 +33,7 @@ export default function Home() {
     return (
         <DataProvider>
             <SEO title="TASA Family Tree" description="UMCP TASA Family Tree"/>
+            <WIP />
             <div className={classes.root}>
                 <div className={classes.header}>
                     <Header />
