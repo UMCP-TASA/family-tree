@@ -17,6 +17,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@types/react-helmet": "^6.1.0",
     "@visx/event": "^1.0.0",
     "@visx/gradient": "^1.0.0",
     "@visx/group": "^1.0.0",
@@ -34,6 +35,7 @@
     "patch-package": "^6.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-helmet": "^6.1.0",
     "react-spring": "9.0.0-rc.3"
   },
   "devDependencies": {

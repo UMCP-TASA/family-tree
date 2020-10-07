@@ -5,6 +5,7 @@ import data from "assets/family-tree"
 import Tree from "components/Tree"
 import Header from "components/Header"
 import { DataProvider, DataUpdater } from "components/DataContext"
+import SEO from "components/Seo"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -29,6 +30,7 @@ export default function Home() {
     const classes = useStyles()
     return (
         <DataProvider>
+            <SEO title="TASA Family Tree" description="UMCP TASA Family Tree"/>
             <div className={classes.root}>
                 <div className={classes.header}>
                     <Header />
