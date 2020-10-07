@@ -11,7 +11,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -28,6 +29,7 @@
     "gatsby-alias-imports": "^1.0.4",
     "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-source-filesystem": "^2.3.33",
+    "patch-package": "^6.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-spring": "9.0.0-rc.3"
@@ -40,6 +42,9 @@
     "@typescript-eslint/parser": "^4.4.0",
     "eslint": "^7.10.0",
     "prettier": "2.1.1"
+  },
+  "resolutions": {
+    "webpack": "~4.43.0"
   },
   "repository": {
     "type": "git",
