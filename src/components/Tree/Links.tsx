@@ -1,6 +1,5 @@
 import React from "react"
 import { useTheme } from "@material-ui/core"
-import { LinkHorizontal} from "@visx/shape"
 import { LinkType } from "."
 import { useTransition, animated } from "react-spring"
 import { findCollapsedParent, getX0, getY0 } from "@utils"
@@ -84,16 +83,6 @@ export default function Links(props: LinksProps) {
 
     return (
         <>
-            {/* {links.map((link, i) => (
-                <LinkHorizontal
-                    data={link}
-                    {...rest}
-                    stroke={theme.palette.link.main}
-                    strokeWidth="1"
-                    fill="none"
-                    key={keyAccessor(link)}
-                />
-            ))} */}
             {transitions((style, __) => (
                 <AnimatedLink
                     sx={style.sx}

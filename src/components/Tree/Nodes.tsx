@@ -1,7 +1,6 @@
 import React from "react"
 import { useTransition, animated } from "react-spring"
 
-import { AnimatedNode } from "./Node2"
 import Node from "./Node"
 import { NodeType } from "."
 import { getTopLeft, findCollapsedParent, getX0, getY0 } from "@utils"
@@ -70,51 +69,6 @@ export default function Nodes(props: NodesProps) {
 
     return (
         <>
-            {/* {nodes.map(node => (
-                <Group
-                    top={node.x}
-                    left={node.y}
-                    onClick={() => onNodeClick(node)}
-                    style={{ cursor: "pointer" }}
-                    id={node.data.attributes.id}
-                    key={node.data.attributes.id}
-                >
-                    <Node node={node} />
-                </Group>
-            ))} */}
-            {/* {transitions.map(({ item, key, props }) => (
-                <animated.g
-                    opacity={props.opacity}
-                    transform={props.transform}
-                    onClick={() => onNodeClick(item)}
-                    style={{
-                        cursor: "pointer",
-                        pointerEvents: props.opacity
-                            ? props.opacity.interpolate(v =>
-                                  (v as number) < 0.5 ? "none" : "all"
-                              )
-                            : "none",
-                    }}
-                    id={key}
-                    key={key}
-                >
-                    <Node node={item} />
-                </animated.g>
-            ))} */}
-            {/* {transitions((style, item) => (
-                <AnimatedNode 
-                    node={item}
-                    opacity={style.opacity}
-                    transform={style.transform}
-                    onClick={() => onNodeClick(item)}
-                    style={{
-                        cursor: "pointer",
-                        pointerEvents: style.opacity.to(v =>
-                            v < 0.5 ? "none" : "all"
-                        ),
-                    }}
-                />
-            ))} */}
             {transitions((style, item) => (
                 <animated.g
                     opacity={style.opacity}
