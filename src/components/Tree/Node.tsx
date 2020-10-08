@@ -1,13 +1,20 @@
 import React from "react"
-import { Container, useTheme } from "@material-ui/core"
+import { useTheme } from "@material-ui/core"
 
 import { Text } from "@visx/text"
-import { TextProps } from "@visx/text/lib/Text"
 import { NodeType } from "."
-import { isExpanded } from "@utils"
+import { hasPositions, isExpanded } from "@utils"
 
 const WIDTH = 75
-const HEIGHT = 25
+
+const FONT_SIZE = "11px"
+const TEXT_CENTER = 4
+
+const TEXT_STYLE: React.CSSProperties = {
+    fontSize: FONT_SIZE,
+    // pointerEvents: "none",
+    lineHeight: 10,
+}
 
 export type NodeProps = {
     node: NodeType
@@ -15,94 +22,94 @@ export type NodeProps = {
     height?: number
 }
 
-const RootNode = (props: NodeProps) => {
-    const { node, width = WIDTH, height = HEIGHT } = props
+type CommonProps = {
+    data: string
+}
+
+type RootProps = CommonProps & {
+    width?: number
+}
+
+const RootNode = (props: RootProps) => {
+    const { data, width = WIDTH } = props
     const radius = width / 2
-    const textWidth = radius * 2
     return (
         <>
             <circle r={radius} fill="url('#root-node-color')" />
-            {/* <LogoSVG width={width} height={width}/> */}
+            <Text
+                width={width}
+                textAnchor="middle"
+                verticalAnchor="middle"
+                style={TEXT_STYLE}
+            >
+                {data}
+            </Text>
         </>
     )
 }
 
-const ParentNode = (props: NodeProps) => {
-    const { node, width = WIDTH, height = HEIGHT } = props
-    const isFocused = node.data.isFocused // not currently working without way to force tree to update
-    const expanded = isExpanded(node)
+type ParentProps = CommonProps & {
+    isExpanded: boolean
+    isFocused?: boolean
+}
+
+const ParentNode = (props: ParentProps) => {
+    const { data, isExpanded, isFocused } = props
+    const shapeWidth = 8
     const theme = useTheme()
+
     return (
         <>
-            <rect
-                width={width}
-                height={height}
-                x={-width / 2}
-                y={-height / 2}
-                fill={theme.palette.background.default}
-                stroke={
-                    expanded
-                        ? theme.palette.leafNode.main
-                        : theme.palette.parentNode.main
+            <circle
+                r={shapeWidth / 2}
+                fill={
+                    isExpanded ? "transparent" : theme.palette.parentNode.main
                 }
-                strokeDasharray={expanded ? "2,2" : "0,0"}
-                strokeOpacity={expanded ? 0.6 : 1.0}
-                rx={12}
+                stroke={theme.palette.parentNode.main}
             />
+            <text
+                textAnchor="end"
+                x={-shapeWidth}
+                y={TEXT_CENTER}
+                fill="white"
+                style={TEXT_STYLE}
+            >
+                {data}
+            </text>
         </>
     )
 }
 
-const LeafNode = (props: NodeProps) => {
-    const { node, width = WIDTH, height = HEIGHT } = props
-    const theme = useTheme()
+type LeafProps = CommonProps & {}
+
+const LeafNode = (props: LeafProps) => {
+    const { data } = props
     return (
-        <rect
-            width={width}
-            height={9}
-            y={-4}
-            fill="none"
-        />
+        <text
+            textAnchor="start"
+            x={2}
+            y={TEXT_CENTER}
+            fill={"white"}
+            style={TEXT_STYLE}
+        >
+            {data}
+        </text>
     )
 }
 
 export default function Node(props: NodeProps) {
-    const { node, width = WIDTH, height = HEIGHT } = props
+    const { node } = props
     const isRoot = node.depth === 0
     const isParent = node.data.children && node.data.children.length > 0
-    const theme = useTheme()
+    const textToShow = `${
+        hasPositions(node.data.attributes.positions) ? "⭐" : ""
+    }${node.data.name} '${node.data.attributes.year.substring(2)}`
 
-    let shape = <></>
-    let textFill = ""
     if (isRoot) {
-        textFill = "#71248e"
-        shape = <RootNode node={node} width={width} height={height} />
+        return <RootNode data={textToShow} />
     } else if (isParent) {
-        textFill = isExpanded(node)
-            ? theme.palette.leafNode.contrastText
-            : theme.palette.parentNode.contrastText
-
-        shape = <ParentNode node={node} width={width} height={height} />
+        return <ParentNode data={textToShow} isExpanded={isExpanded(node)} />
     } else {
-        textFill = theme.palette.leafNode.contrastText
-        shape = <LeafNode node={node} width={width} height={height} />
+        return <LeafNode data={textToShow} />
     }
-
-    return (
-        <>
-            {shape}
-            <Text
-                width={isRoot || isParent ? width : width * 2}
-                fill={textFill}
-                textAnchor={isRoot || isParent ? "middle" : "start"}
-                verticalAnchor="middle"
-                fontSize="9px"
-                style={{
-                    pointerEvents: "none",
-                }}
-            >
-                {`${node.data.name} '${node.data.attributes.year.substring(2)}`}
-            </Text>
-        </>
-    )
 }

@@ -43,7 +43,7 @@ class Attributes:
         if(len(row) < POSITIONS_INDEX):
             self.id = "UMCP_TASA_2001"
             self.year = "2001"
-            self.positions = []
+            self.positions = [""]
             self.description = ""
             self.familySize = 0
         else:

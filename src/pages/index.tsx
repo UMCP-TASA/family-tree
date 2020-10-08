@@ -12,6 +12,7 @@ import { WIP } from "components/Modals"
 import SEO from "components/Seo"
 
 import data from "../assets/familyTree.json"
+import { hasPositions } from "@utils"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -120,13 +121,12 @@ export default function Home() {
                                     {tooltipData.year}
                                 </Typography>
 
-                                {tooltipData.positions.length > 0 &&
-                                    tooltipData.positions[0] !== "" && (
-                                        <Typography>
-                                            Positions:{" "}
-                                            {tooltipData.positions.join(", ")}
-                                        </Typography>
-                                    )}
+                                {hasPositions(tooltipData.positions) && (
+                                    <Typography>
+                                        Positions:{" "}
+                                        {tooltipData.positions.join(", ")}
+                                    </Typography>
+                                )}
 
                                 <Typography>
                                     Family size: {tooltipData.familySize}

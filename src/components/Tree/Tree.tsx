@@ -36,7 +36,7 @@ function Tree(props: TreeProps) {
             <VisTree<TreeData>
                 size={[yMax, xMax]}
                 root={root}
-                separation={(a, b) => (a.parent == b.parent ? 10 : 5)}
+                separation={(a, b) => (a.parent == b.parent ? 8 : 16)}
             >
                 {tree => (
                     <>
@@ -54,7 +54,6 @@ function Tree(props: TreeProps) {
                                             node.data.y0 = node.y
                                         }
                                         node.data.isExpanded = !isExpanded(node)
-                                        // context.setTree(tree)
                                         forceUpdate()
                                     }}
                                     handleMouseOver={handleMouseOver}

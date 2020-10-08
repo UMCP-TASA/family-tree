@@ -10,18 +10,20 @@ type Props = React.SVGAttributes<SVGGElement> & {
 }
 
 export default function Node(props: Props) {
-    const { node, ...rest } = props
+    const { node } = props
     const theme = useTheme()
     const width = 50
     const height = 25
     const isRoot = node.depth === 0
     const isParent = node.data.children && node.data.children.length > 0
+    const isLeaf = !isRoot && !isParent
 
     const centerX = -width / 2
     const centerY = -height / 2
 
     let shape = <></>
-    let textFill = ""
+    let textFill = "" 
+    let textAnchor = ""
 
     if (isRoot) {
         shape = <circle r={width / 2} fill="url('#root-node-color')" />
@@ -60,7 +62,7 @@ export default function Node(props: Props) {
     }
 
     return (
-        <g {...rest}>
+        <>
             {shape}
             <Text
                 width={width}
@@ -72,7 +74,7 @@ export default function Node(props: Props) {
             >
                 {node.data.name}
             </Text>
-        </g>
+        </>
     )
 }
 

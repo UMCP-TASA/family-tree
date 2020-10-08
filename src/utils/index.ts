@@ -2,6 +2,7 @@ import { NodeType } from "components/Tree"
 import { ZoomType } from "components/Zoom"
 
 export const isExpanded = (node: NodeType) => node.data.isExpanded || node.data.isExpanded == undefined
+export const hasPositions = (positions: string[]) => positions.length > 0 && positions[0] !== ""
 
 export const getX0 = (node: NodeType) => node.data.x0 ? node.data.x0 : node.x
 export const getY0 = (node: NodeType) => node.data.y0 ? node.data.y0 : node.y

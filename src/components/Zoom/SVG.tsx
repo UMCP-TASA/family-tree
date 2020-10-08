@@ -12,6 +12,11 @@ export type Props = {
 export default function SVG(props: Props) {
     const { width, height, zoom, children } = props
 
+    // Center on mount
+    React.useEffect(() => {
+        zoom.center()
+    }, [])
+
     return (
         <svg
             width={width}
