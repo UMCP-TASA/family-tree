@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Typography, makeStyles } from "@material-ui/core"
+import { Container, Typography, makeStyles, Paper } from "@material-ui/core"
 import { useTooltip, TooltipWithBounds, defaultStyles } from "@visx/tooltip"
 import { localPoint } from "@visx/event"
 
@@ -32,6 +32,10 @@ const useStyles = makeStyles(theme => ({
         position: "relative",
         background: theme.palette.background.default,
     },
+    tooltip: {
+        padding: theme.spacing(2),
+        borderRadius: theme.shape.borderRadius,
+    }
 }))
 
 type TooltipData = {
@@ -107,9 +111,12 @@ export default function Home() {
                             left={tooltipLeft}
                             style={{
                                 ...defaultStyles,
+                                color: undefined,
+                                backgroundColor: undefined,
+                                padding: undefined,
                             }}
                         >
-                            <Container maxWidth="xs">
+                            <Paper className={classes.tooltip}>
                                 <Typography variant="h6" align="center">
                                     {tooltipData.name}
                                 </Typography>
@@ -131,7 +138,7 @@ export default function Home() {
                                 <Typography>
                                     Family size: {tooltipData.familySize}
                                 </Typography>
-                            </Container>
+                            </Paper>
                         </TooltipWithBounds>
                     )}
                 </div>

@@ -1,5 +1,5 @@
 import React from "react"
-import { AppBar, Toolbar, Grid, makeStyles } from "@material-ui/core"
+import { AppBar, Toolbar, Grid, makeStyles, Typography } from "@material-ui/core"
 
 import Search from "./Search"
 import Controls from "./Controls"
@@ -17,7 +17,7 @@ export default function Header(props: Props) {
     const classes = useStyles()
 
     return (
-        <AppBar className={classes.root}>
+        <AppBar>
             <Toolbar>
                 <Grid
                     container

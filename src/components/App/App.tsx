@@ -1,7 +1,7 @@
 import React from "react"
 import { ThemeProvider } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import theme from "./theme"
+import { darkTheme, lightTheme } from "./theme"
 
 type Props = {
     children: React.ReactNode
@@ -9,7 +9,7 @@ type Props = {
 
 export default ({ children }: Props) => {
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             {children}
         </ThemeProvider>

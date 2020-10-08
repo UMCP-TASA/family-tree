@@ -51,6 +51,7 @@ export default function Controls(props: Props) {
                     id="zoom-field"
                     label="Zoom"
                     variant="outlined"
+                    color="secondary"
                     size="small"
                     margin="dense"
                     type="number"

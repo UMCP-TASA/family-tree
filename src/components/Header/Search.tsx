@@ -66,6 +66,7 @@ export default function Search(props: Props) {
                 color="secondary"
                 variant="outlined"
                 margin="dense"
+                autoComplete="off"
                 fullWidth
                 aria-haspopup
                 ref={anchorRef}

@@ -4,6 +4,7 @@ import { useTheme } from "@material-ui/core"
 import { Text } from "@visx/text"
 import { NodeType } from "."
 import { hasPositions, isExpanded } from "@utils"
+import { LogoSVG } from "components/Logo"
 
 const WIDTH = 75
 
@@ -33,9 +34,11 @@ type RootProps = CommonProps & {
 const RootNode = (props: RootProps) => {
     const { data, width = WIDTH } = props
     const radius = width / 2
+    const theme = useTheme()
+    const transform = "scale(0.25, 0.25) translate(-300, -200)"
     return (
         <>
-            <circle r={radius} fill="url('#root-node-color')" />
+            {/* <circle r={radius} fill="url('#root-node-color')" />
             <Text
                 width={width}
                 textAnchor="middle"
@@ -43,7 +46,9 @@ const RootNode = (props: RootProps) => {
                 style={TEXT_STYLE}
             >
                 {data}
-            </Text>
+            </Text> */}
+            <circle r={40} cx={-25} fill="transparent"/>
+            <LogoSVG fill={theme.palette.text.primary} transform={transform}/>
         </>
     )
 }
@@ -57,22 +62,27 @@ const ParentNode = (props: ParentProps) => {
     const { data, isExpanded, isFocused } = props
     const shapeWidth = 8
     const theme = useTheme()
+    const [hover, setHover] = React.useState(false)
 
     return (
         <>
             <circle
                 r={shapeWidth / 2}
-                fill={
-                    isExpanded ? "transparent" : theme.treeColors.parentFill
-                }
+                fill={isExpanded ? "transparent" : theme.treeColors.parentFill}
                 stroke={theme.treeColors.parentStroke}
             />
             <text
                 textAnchor="end"
                 x={-shapeWidth}
                 y={TEXT_CENTER}
-                fill={theme.palette.text.primary}
+                fill={
+                    hover
+                        ? theme.palette.primary.light
+                        : theme.palette.text.primary
+                }
                 style={TEXT_STYLE}
+                onMouseOver={() => setHover(true)}
+                onMouseOut={() => setHover(false)}
             >
                 {data}
             </text>
