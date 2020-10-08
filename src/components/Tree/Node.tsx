@@ -68,7 +68,7 @@ const ParentNode = (props: ParentProps) => {
         <>
             <circle
                 r={shapeWidth / 2}
-                fill={isExpanded ? "transparent" : theme.treeColors.parentFill}
+                fill={isExpanded ? theme.palette.background.default : theme.treeColors.parentFill}
                 stroke={theme.treeColors.parentStroke}
             />
             <text
