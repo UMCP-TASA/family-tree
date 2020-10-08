@@ -31,17 +31,17 @@ export const darkTheme = responsiveFontSizes(createMuiTheme({
 export const lightTheme = responsiveFontSizes(createMuiTheme({
     // custom colors defined in types/theme
     treeColors: {
-        linkStroke: "#5D576B",
-        parentFill: "#8884ff",
-        parentStroke: "#8884ff",
+        linkStroke: "#EB8A90",
+        parentFill: "#EB8A90",
+        parentStroke: "#EB8A90",
     },
     palette: {
         type: "light",
         primary: {
-            main: "#8884ff", 
+            main: "#4D7EA8", 
         },
         secondary: {
-            main: "#D7BCE8",
+            main: "#EB8A90",
         },
         // background: {
         //     paper: "#E8CEE4", // light blue
