@@ -108,7 +108,7 @@ The [`Nodes`](src/components/Tree/Nodes.tsx) component handles the animations an
 -   [ ] Add more visual way of modifying the tree instead of via the Google Sheet
 -   [ ] Add vertical orientation
 -   [ ] Improve mobile support
--   [ ] Fix overlapping nodes
+-   [x] Fix overlapping nodes
 -   [ ] Add dark/light theme
 -   [ ] Better connector curves
 -   [ ] Add highlighting/visual change when nodes are found via search
