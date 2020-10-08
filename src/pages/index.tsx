@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Typography, makeStyles, Paper } from "@material-ui/core"
+import { Typography, makeStyles, Paper, Hidden } from "@material-ui/core"
 import { useTooltip, TooltipWithBounds, defaultStyles } from "@visx/tooltip"
 import { localPoint } from "@visx/event"
 
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     tooltip: {
         padding: theme.spacing(2),
         borderRadius: theme.shape.borderRadius,
-    }
+    },
 }))
 
 type TooltipData = {
@@ -104,43 +104,48 @@ export default function Home() {
                             </>
                         )}
                     </ZoomContainer>
-                    {tooltipOpen && tooltipData && (
-                        <TooltipWithBounds
-                            key={Math.random()}
-                            top={tooltipTop}
-                            left={tooltipLeft}
-                            style={{
-                                ...defaultStyles,
-                                color: undefined,
-                                backgroundColor: undefined,
-                                padding: undefined,
-                            }}
-                        >
-                            <Paper className={classes.tooltip}>
-                                <Typography variant="h6" align="center">
-                                    {tooltipData.name}
-                                </Typography>
-                                <Typography
-                                    variant="subtitle1"
-                                    align="center"
-                                    gutterBottom
-                                >
-                                    {tooltipData.year}
-                                </Typography>
-
-                                {hasPositions(tooltipData.positions) && (
-                                    <Typography>
-                                        Positions:{" "}
-                                        {tooltipData.positions.join(", ")}
+                    <Hidden lgDown>
+                        {tooltipOpen && tooltipData && (
+                            <TooltipWithBounds
+                                key={Math.random()}
+                                top={tooltipTop}
+                                left={tooltipLeft}
+                                style={{
+                                    ...defaultStyles,
+                                    color: undefined,
+                                    backgroundColor: undefined,
+                                    padding: undefined,
+                                }}
+                            >
+                                <Paper className={classes.tooltip}>
+                                    <Typography variant="h6" align="center">
+                                        {tooltipData.name}
                                     </Typography>
-                                )}
+                                    <Typography
+                                        variant="subtitle1"
+                                        align="center"
+                                        gutterBottom
+                                    >
+                                        {tooltipData.year}
+                                    </Typography>
 
-                                <Typography>
-                                    Family size: {tooltipData.familySize}
-                                </Typography>
-                            </Paper>
-                        </TooltipWithBounds>
-                    )}
+                                    {hasPositions(tooltipData.positions) && (
+                                        <Typography>
+                                            Positions:{" "}
+                                            {tooltipData.positions.join(", ")}
+                                        </Typography>
+                                    )}
+
+                                    {tooltipData.familySize > 0 && (
+                                        <Typography>
+                                            Family size:{" "}
+                                            {tooltipData.familySize}
+                                        </Typography>
+                                    )}
+                                </Paper>
+                            </TooltipWithBounds>
+                        )}
+                    </Hidden>
                 </div>
             </div>
         </DataProvider>
