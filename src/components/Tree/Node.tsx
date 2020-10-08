@@ -63,15 +63,15 @@ const ParentNode = (props: ParentProps) => {
             <circle
                 r={shapeWidth / 2}
                 fill={
-                    isExpanded ? "transparent" : theme.palette.parentNode.main
+                    isExpanded ? "transparent" : theme.treeColors.parentFill
                 }
-                stroke={theme.palette.parentNode.main}
+                stroke={theme.treeColors.parentStroke}
             />
             <text
                 textAnchor="end"
                 x={-shapeWidth}
                 y={TEXT_CENTER}
-                fill="white"
+                fill={theme.palette.text.primary}
                 style={TEXT_STYLE}
             >
                 {data}
@@ -84,12 +84,13 @@ type LeafProps = CommonProps & {}
 
 const LeafNode = (props: LeafProps) => {
     const { data } = props
+    const theme = useTheme()
     return (
         <text
             textAnchor="start"
             x={2}
             y={TEXT_CENTER}
-            fill={"white"}
+            fill={theme.palette.text.primary}
             style={TEXT_STYLE}
         >
             {data}

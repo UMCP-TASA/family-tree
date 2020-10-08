@@ -3,6 +3,12 @@ import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
 // A custom theme for this app
 // Custom palettes added in declarations.d.ts
 const theme = createMuiTheme({
+    // custom colors defined in types/theme
+    treeColors: {
+        linkStroke: "rgb(254,110,158,0.6)",
+        parentFill: "#03c0dc",
+        parentStroke: "#03c0dc",
+    },
     palette: {
         type: "dark",
         primary: {
@@ -15,19 +21,6 @@ const theme = createMuiTheme({
             paper: "#03c0dc", // light blue
             default: "#272b4d", // navy blue
         },
-
-        // custom colors defined in types/createPalette
-        parentNode: { 
-            main: "#03c0dc", // light blue
-            contrastText: "#ffffff", // white
-        },
-        leafNode: {
-            main: "#26deb0", // light green
-            contrastText: "#26deb0",
-        },
-        link: {
-            main: "rgb(254,110,158,0.6)",
-        }
     },
     shape: {
         borderRadius: 8,

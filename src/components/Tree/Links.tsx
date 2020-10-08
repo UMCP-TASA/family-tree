@@ -90,7 +90,7 @@ export default function Links(props: LinksProps) {
                     tx={style.tx}
                     ty={style.ty}
                     // @ts-ignore Stroke is invalid here hecause of Animated but it's fine
-                    stroke={theme.palette.link.main}
+                    stroke={theme.treeColors.linkStroke}
                     opacity={style.opacity}
                     strokeWidth="1"
                     fill="none"
